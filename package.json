@@ -1,0 +1,24 @@
+{
+  "name": "vexgod-discord",
+  "version": "0.0.1",
+  "description": "Small Bot for the Homies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LonelyChimo302/Vexgod-Discord-Bot.git"
+  },
+  "author": "LonelyChimo | Tobias Handtke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LonelyChimo302/Vexgod-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/LonelyChimo302/Vexgod-Discord-Bot#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1"
+  }
+}
