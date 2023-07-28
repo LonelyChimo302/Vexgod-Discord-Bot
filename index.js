@@ -74,6 +74,8 @@ client.login(token);
 
 // Set Playing Status
 
+client.user.setActivity('Manuuu-OnlyFans', { type: ActivityType.Watching });
+
 setInterval(function(){
     let status = statuses[Math.floor(Math.random() * statuses.length)]
     client.user.setActivity(status, { type: 'WATCHING' })
