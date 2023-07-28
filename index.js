@@ -3,14 +3,35 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
 const { token } = require('./config.json');
+let statuses=[
+    'Daddy Shaxx Rule34',
 
+	'Mara Sov Rule34',
+	
+	'Chimo playing with my Spaghetti-Code',
+	
+	'Florian commiting warcrimes',
+	
+	'Manuu-Onlyfans',
+	
+	'Seb ranting about Diablo IV',
+	
+	'Jona playing the Roots of Salvation Raid',
+	
+	'Mudfrog catching insects with his tounge',
+	
+	'Man diese Statusanzeigen machen auf deutsch keinen Sinn',
+	
+	'HELP, HEEEEELP, HEEEEEEEEEELP',
+	
+	'Shadow Money Wizard Gang',
+	
+	'We love casting spells',
+	
+	'Rhulk has a pretty juicy ass tbh'
+]
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
-//Change Playing Status
-
-client.user.setActivity('Mara Sov Rule 34', { type: ActivityType.Watching });
-client.user.setStatus('online');
 
 //Load up the Commands
 
@@ -46,6 +67,14 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+// Set Playing Status
+
+setInterval(function(){
+    let status = statuses[Math.floor(Math.random() * statuses.lenght)]
+    client.user.setActivity(status, { type: 'WATCHING' })
+}, 600000);
+
 
 // Log in to Discord with your client's token
 
