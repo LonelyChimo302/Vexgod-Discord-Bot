@@ -40,13 +40,7 @@ module.exports = {
     const zeit = msToTime(ms)
 
 
-    if (user = `1133670597277261876`) {
-
-        await interaction.reply({ content: `Brudi, ich kann mich ja wohl schlecht selbst Timeouten. Du Hurensohn <3`, ephemeral: true})
-
-    } 
-
-    else if (zeit > '2419200000') {
+    if (zeit > '2419200000') {
 
         await interaction.reply({ content: `Bro nein, da steht doch wie viel das Maximum ist... 28 Tage/2419200000ms`, ephemeral: true })
 
