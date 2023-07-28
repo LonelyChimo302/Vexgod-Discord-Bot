@@ -1,4 +1,7 @@
-const { SlashCommandBuilder, PermissionFlagsBits, client } = require('discord.js');
+// Todo:  Add if scenario for when some Idiot tries to Timeout the Bot itself
+
+
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const msToTimecode = require('ms-to-timecode');
 
 module.exports = {
@@ -47,8 +50,8 @@ module.exports = {
     }
     
     else {
-        await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`)
-     // await user.timeout(ms);
+        await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
+        await user.timeout(ms);
 		await interaction.reply({ content: `Der Nutzer **${user}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
         }
     },
