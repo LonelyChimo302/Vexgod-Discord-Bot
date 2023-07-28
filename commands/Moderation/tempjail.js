@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, Client } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, client } = require('discord.js');
 const msToTimecode = require('ms-to-timecode');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
                 .setRequired(true))
         .addIntegerOption(option =>
             option.setName('zeit')
-                .setDescription('Wie lange (in Millisekunden')
+                .setDescription('Wie lange (in Millisekunden) MAX: 2419200000 (28 Tage)')
                 .setRequired(true))
         .addStringOption(option =>
             option.setName('grund')
@@ -38,8 +38,24 @@ module.exports = {
         else return days + " Tage"
       }
     const zeit = msToTime(ms)
-        await Client.users.send(user, `Du wurdest gerade getimeouted. Du wirst erst wieder in ${zeit} mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: ${grund}`)
+
+
+    if (user = `1133670597277261876`) {
+
+        await interaction.reply({ content: `Brudi, ich kann mich ja wohl schlecht selbst Timeouten. Du Hurensohn <3`, ephemeral: true})
+
+    } 
+
+    else if (zeit > '2419200000') {
+
+        await interaction.reply({ content: `Bro nein, da steht doch wie viel das Maximum ist... 28 Tage/2419200000ms`, ephemeral: true })
+
+    }
+    
+    else {
+        await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`)
      // await user.timeout(ms);
-		await interaction.reply({ content: `Der Nutzer ${user} wird nun für ${zeit} gesperrt`, ephemeral: true });
-	},
+		await interaction.reply({ content: `Der Nutzer **${user}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
+        }
+    },
 };
