@@ -40,7 +40,7 @@ module.exports = {
     const zeit = msToTime(ms)
 
 
-    if (zeit > '2419200000') {
+    if (ms > '2419200000') {
 
         await interaction.reply({ content: `Bro nein, da steht doch wie viel das Maximum ist... 28 Tage/2419200000ms`, ephemeral: true })
 
