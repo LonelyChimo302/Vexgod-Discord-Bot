@@ -1,23 +1,35 @@
-const { SlashCommandBuilder } = require('discord.js');
+// Todo:  Add if scenario for when some Idiot tries to Timeout the Bot itself
+
+
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const msToTimecode = require('ms-to-timecode');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('tempjail')
 		.setDescription('Steck einen User für eine festgelegte Zeit ins Gefängnis')
+        .setDMPermission(false)
+        .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('Der Nutzer der gesperrt werden soll')
                 .setRequired(true))
         .addIntegerOption(option =>
             option.setName('zeit')
-                .setDescription('Wie lange (in Millisekunden')
+                .setDescription('Wie lange (in Millisekunden) MAX: 2419200000 (28 Tage)')
+                .setRequired(true))
+        .addStringOption(option =>
+            option.setName('grund')
+                .setDescription('Der Grund du Huso')
                 .setRequired(true)),
 
 	async execute(interaction) {
 
     const user = interaction.options.getUser('user');
     const ms = interaction.options.getInteger('zeit');
+    const grund = interaction.options.getString('grund');
+    const member = interaction.options.getMember('user');
+
 
     function msToTime() {
 
@@ -32,6 +44,17 @@ module.exports = {
       }
     const zeit = msToTime(ms)
 
-		await interaction.reply({ content: `Der Nutzer ${user} wird nun für ${zeit} gesperrt`, ephemeral: true });
-	},
+
+    if (ms > '2419200000') {
+
+        await interaction.reply({ content: `Bro nein, da steht doch wie viel das Maximum ist... 28 Tage/2419200000ms`, ephemeral: true })
+
+    }
+    
+    else {
+        await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
+        await member.timeout(ms);
+		await interaction.reply({ content: `Der Nutzer **${user}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
+        }
+    },
 };

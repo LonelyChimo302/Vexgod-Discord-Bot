@@ -8,5 +8,9 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
+		setInterval(function(){
+			let status = statuses[Math.floor(Math.random() * statuses.length)]
+			client.user.setActivity(status, { type: 'WATCHING' })
+		}, 600000);
 	},
 };
