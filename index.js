@@ -71,7 +71,7 @@ for (const file of eventFiles) {
 // Set Playing Status
 
 setInterval(function(){
-    let status = statuses[Math.floor(Math.random() * statuses.lenght)]
+    let status = statuses[Math.floor(Math.random() * statuses.length)]
     client.user.setActivity(status, { type: 'WATCHING' })
 }, 600000);
 
