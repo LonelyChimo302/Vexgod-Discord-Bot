@@ -27,7 +27,9 @@ module.exports = {
 
     const user = interaction.options.getUser('user');
     const ms = interaction.options.getInteger('zeit');
-    const grund = interaction.options.getString('grund')
+    const grund = interaction.options.getString('grund');
+    const member = interaction.options.getMember('user');
+
 
     function msToTime() {
 
@@ -51,7 +53,7 @@ module.exports = {
     
     else {
         await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
-        await user.timeout(ms);
+        await member.timeout(ms);
 		await interaction.reply({ content: `Der Nutzer **${user}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
         }
     },
