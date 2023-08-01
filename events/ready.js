@@ -1,5 +1,9 @@
 const { Events, ActivityType } = require('discord.js');
 
+const { version } = require('../version.json');
+
+const {changelog} = require('../version.json')
+
 let statuses=[
     'Daddy Shaxx Rule34',
 
@@ -25,7 +29,11 @@ let statuses=[
 	
 	'We love casting spells',
 	
-	'Rhulk has a pretty juicy ass tbh'
+	'Rhulk has a pretty juicy ass tbh',
+
+	'Thomas cooking...something...',
+
+	`Nessussoßen Bot Version ${version}`
 ]
 
 module.exports = {
@@ -33,8 +41,8 @@ module.exports = {
 	once: false,
 	execute(client) {
         client.user.setPresence({
-            activities: [{ name: 'Starting up', type: ActivityType.Watching }],
-            status: 'online',
+            activities: [{ name: `Nessussoßen-Bot Version ${version} starting up.`, type: ActivityType.Watching }],
+            status: 'idle',
         });
         setInterval(function(){
             let status = statuses[Math.floor(Math.random() * statuses.length)]
@@ -44,5 +52,14 @@ module.exports = {
             });
         }, 180000)
 		console.log(`Ready! Logged in as ${client.user.tag}`);
+
+		if (client.user.id == '1134558655098916974') {
+			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped lmfaoooo**');
+			client.channels.cache.get('1084198804108095660').send(changelog)
+		}
+
+		else {
+			client.channels.cache.get('1133666005172887564').send('Im up testtest123')
+		}
 	},
 };

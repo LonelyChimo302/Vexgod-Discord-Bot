@@ -1,0 +1,5 @@
+{
+    "version" : "0.2",
+
+    "changelog" : ">>> # NEU: Version 0.2:\n\n    ## Hinzugefügt:\n           -  Changelog-Command\n           -  Ein paar neue Statusanzeigen\n           - Mee6 wurde ersetzt. Neue User bekommen ihre 'Neu' Rolle und Willkommens-DM nun von Mara\n\n## Geändert:\n           - Allgemein, den Code aufgeräumt\n\n## Entfernt:\n           - 'Server' und 'User' Command, da diese keine hilfreichen Infos gaben und nur zu Testzwecken existierten\n\n# Ältere Versionen:\n\n## Version 0.1\n\n### Hinzugefügt:\n             - Grundgerüst\n             - 'Tempjail'-Command"
+}
