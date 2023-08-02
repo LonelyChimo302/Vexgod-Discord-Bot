@@ -1,7 +1,7 @@
 # Vexgod-Discord-Bot
 A simple Discord Bot for the Homies
 
-> # NEU: Version 0.2:
+># NEU: Version 0.2:
 >
 >## Hinzugefügt:
 >*  Changelog-Command
