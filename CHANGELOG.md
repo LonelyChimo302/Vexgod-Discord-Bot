@@ -25,3 +25,5 @@ A simple Discord Bot for the Homies
 > 
 > ### Entfernt:
 > * 'Server' und 'User' Command, da diese keine hilfreichen Infos gaben und nur zu Testzwecken existierten
+
+> [Den ganzen Changelog findest du hier](https://github.com/LonelyChimo302/Vexgod-Discord-Bot)
