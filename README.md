@@ -20,10 +20,10 @@ A simple Discord Bot for the Homies
 > *  Ein paar neue Statusanzeigen
 > *  Mee6 wurde ersetzt. Neue User bekommen ihre 'Neu' Rolle und Willkommens-DM nun von Mara
 > 
-> ## Geändert:
+> ### Geändert:
 > *  Allgemein, den Code aufgeräumt
 > 
-> ## Entfernt:
+> ### Entfernt:
 > * 'Server' und 'User' Command, da diese keine hilfreichen Infos gaben und nur zu Testzwecken existierten
 > 
 > ## Version 0.1
