@@ -35,7 +35,11 @@ let statuses=[
 
 	'Thomas cooking...something...',
 
-	`Nessussoßen Bot Version ${version}`
+	`Nessussoßen Bot Version ${version}`,
+	
+	'Shaggy Ball Z and One Jump Man',
+
+	'Kevin fap the shit out of his dick'
 ]
 
 module.exports = {
