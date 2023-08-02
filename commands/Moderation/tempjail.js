@@ -1,8 +1,6 @@
-// Todo:  Add if scenario for when some Idiot tries to Timeout the Bot itself
-
+const client = require("../../index.js")
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-const msToTimecode = require('ms-to-timecode');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -25,7 +23,7 @@ module.exports = {
 
 	async execute(interaction) {
 
-    const user = interaction.options.getUser('user');
+    const nutzer = interaction.options.getUser('user');
     const ms = interaction.options.getInteger('zeit');
     const grund = interaction.options.getString('grund');
     const member = interaction.options.getMember('user');
@@ -51,10 +49,15 @@ module.exports = {
 
     }
     
+    else if (await client.user.id == await member.user.id) {
+       await interaction.reply({ content: `Bro nein, ich kann mich doch nicht selbst Timeouten`, ephemeral: true })
+    }
+
+
     else {
-        await user.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
+        await nutzer.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
         await member.timeout(ms);
-		await interaction.reply({ content: `Der Nutzer **${user}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
+		await interaction.reply({ content: `Der Nutzer **${nutzer}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
         }
     },
 };

@@ -1,8 +1,10 @@
 const { Events, ActivityType } = require('discord.js');
 
-const { version } = require('../version.json');
+const fs = require('fs');
 
-const {changelog} = require('../version.json')
+const { version } = require('../misc.json');
+
+const changelog = fs.readFileSync('./CHANGELOG.md').toString()
 
 let statuses=[
     'Daddy Shaxx Rule34',
@@ -53,13 +55,18 @@ module.exports = {
         }, 180000)
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 
-		if (client.user.id == '1134558655098916974') {
-			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped lmfaoooo**');
+		if (process.argv[2] && process.argv[2] === '-v') {
+			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped!!!**');
 			client.channels.cache.get('1084198804108095660').send(changelog)
 		}
 
+		else if (process.argv[2] && process.argv[2] === '-r'){
+			console.log('Rebooted')
+		}
+
+
 		else {
-			client.channels.cache.get('1133666005172887564').send('Im up testtest123')
+			console.log('Im up')
 		}
 	},
 };

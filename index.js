@@ -1,4 +1,4 @@
-// Require the necessary discord.js classes
+// Main Constants
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
@@ -7,9 +7,10 @@ const { token } = require('./config.json');
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
+// Module Exports for other Scripts
 
-module.exports = client
-//Load up the Commands
+module.exports = client, fs
+// Load up the Commands
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');

@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
-const {changelog} = require('../../version.json')
+const fs = require('fs');
+const changelog = fs.readFileSync('./CHANGELOG.md').toString()
 
 module.exports = {
 	data: new SlashCommandBuilder()
