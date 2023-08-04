@@ -22,7 +22,9 @@ module.exports = {
                 .setRequired(true)),
 
 	async execute(interaction) {
-
+    
+    console.log('Running');
+    
     const nutzer = interaction.options.getUser('user');
     const ms = interaction.options.getInteger('zeit');
     const grund = interaction.options.getString('grund');
