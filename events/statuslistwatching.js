@@ -36,6 +36,6 @@ let statuses=[
 	'Kevin fap the shit out of his dick'
 ]
 
-let status = statuses[Math.floor(Math.random() * statuses.length)]
+let statuswatching = statuses[Math.floor(Math.random() * statuses.length)]
 
-module.exports = status
+module.exports = statuswatching

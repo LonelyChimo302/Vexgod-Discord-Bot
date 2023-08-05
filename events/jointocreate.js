@@ -57,7 +57,7 @@ try {
         
         }        
     
-    if (oldchannel.members.size <= 0 && oldchannelID !== jtcchannel && oldchannelID !== channel) {
+    if (oldchannel.members.size <= 0 && oldchannel.parentId === parent && oldchannelID !== jtcchannel && oldchannelID !== channel) {
 
         await oldchannel.delete();
         temporaryChannels.delete(oldchannelID)
