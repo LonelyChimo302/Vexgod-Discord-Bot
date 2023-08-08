@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 const fs = require('@supercharge/fs');
 
 module.exports = {
+    cooldown: 5,
 	data: new SlashCommandBuilder()
 		.setName('exolost')
 		.setDescription('Fucking Loser')
@@ -103,6 +104,7 @@ module.exports = {
     }
 
     catch (error){
+        console.error(error)
         interaction.editReply('Irgendwas dummes ist passiert. Entweder ich habe keine Rechte den Namen zu ändern, der finale Name wäre zu lang für Discord oder ein anderer unbekannter Error wurde ausgespuckt.')
     }
 	},  
