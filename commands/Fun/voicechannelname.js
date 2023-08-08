@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-
+const superfs = require('@supercharge/fs');
 const fs = require('node:fs');
 
 module.exports = {
@@ -19,7 +19,9 @@ module.exports = {
 
         const jsondata =  `{ "name" : "${vcname}" }`
         
-        fs.writeFileSync(`./commands/Fun/userVCnames/${memberid}.json`, jsondata);
+        await superfs.ensureDir(`./userfiles/${memberid}`)
+
+        fs.writeFileSync(`./userfiles/${memberid}/voice.json`, jsondata);
 
 		await interaction.reply({ content: `Wird gemacht. Dein Channel heißt in Zukunft ${vcname}`, ephemeral: true });
 	},

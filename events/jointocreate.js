@@ -16,7 +16,7 @@ module.exports = {
 
         const userid = newUser.member.id
 
-        const path = `./commands/Fun/userVCnames/${userid}.json`
+        const path = `./userfiles/${userid}/voice.json`
 
         const exists = fs.existsSync(path)
 
@@ -29,8 +29,8 @@ module.exports = {
         const channel = newUser.channelId;
 
         if (exists === true) {
-            delete require.cache[require.resolve(`../commands/Fun/userVCnames/${userid}.json`)]
-            var { name } = require(`../commands/Fun/userVCnames/${userid}.json`)
+            delete require.cache[require.resolve(`../userfiles/${userid}/voice.json`)]
+            var { name } = require(`../userfiles/${userid}/voice.json`)
         }
         else {
             var name = `${username}'s channel`
@@ -65,7 +65,7 @@ try {
     }
 
 }    catch (error) {
-    console.error(error)
+    
     }
     }
 };

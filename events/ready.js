@@ -6,7 +6,7 @@ const { version } = require('../misc.json');
 
 const changelog = fs.readFileSync('./CHANGELOG.md').toString()
 
-let statuswatching = require('./statuslistwatching.js')
+let status = require('./statuslist.js')
 
 module.exports = {
 	name: Events.ClientReady,
@@ -18,7 +18,7 @@ module.exports = {
         });
         setInterval(function(){
             client.user.setPresence({
-                activities: [{ name: statuswatching, type: ActivityType.Watching }],
+                activities: [status],
                 status: 'online',
             });
         }, 180000)
