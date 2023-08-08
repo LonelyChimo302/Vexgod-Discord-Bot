@@ -6,7 +6,7 @@ const { version } = require('../misc.json');
 
 const changelog = fs.readFileSync('./CHANGELOG.md').toString()
 
-let status = require('./statuslist.js')
+let statuses = require('./statuslist.js')
 
 module.exports = {
 	name: Events.ClientReady,
@@ -17,6 +17,8 @@ module.exports = {
             status: 'idle',
         });
         setInterval(function(){
+
+let status = statuses[Math.floor(Math.random() * statuses.length)]
             client.user.setPresence({
                 activities: [status],
                 status: 'online',

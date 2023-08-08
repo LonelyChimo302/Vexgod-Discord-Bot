@@ -113,6 +113,4 @@ let statuses=[
 },
 ]
 
-let status = statuses[Math.floor(Math.random() * statuses.length)]
-
-module.exports = status
+module.exports = statuses
