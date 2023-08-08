@@ -15,7 +15,7 @@ module.exports = {
         const userid = interaction.member.id
         await fs.ensureDir(`./userfiles/${userid}`)
 		var jsondata =  `{ "consent" : "${consent}" }`
-        await interaction.reply('Alles Klar, niemand darf in Zukunft deinen Nickname mit irgendwelchen Fun-Commands verändern. Dies Schützt aber nicht vor manueller Änderung durch Mods oder dem Admin, sollte dein Name irgendwelche Regeln brechen oder ähnliches.\nSolltest du dich in Zukunft anders entscheiden, kannst du jederzeit diesen Command erneut verwenden.')
+        await interaction.reply({ content: 'Alles Klar, niemand darf in Zukunft deinen Nickname mit irgendwelchen Fun-Commands verändern. Dies Schützt aber nicht vor manueller Änderung durch Mods oder dem Admin, sollte dein Name irgendwelche Regeln brechen oder ähnliches.\nSolltest du dich in Zukunft anders entscheiden, kannst du jederzeit diesen Command erneut verwenden.', ephemeral: true})
         fs.writeFileSync(`./userfiles/${userid}/nickconsent.json`, jsondata);
 	},
 };
