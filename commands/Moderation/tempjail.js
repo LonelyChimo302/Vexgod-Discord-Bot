@@ -2,6 +2,10 @@ const client = require("../../index.js")
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 
+const cooldown = new Set();
+
+const cooldownTime = 30000; 
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('tempjail')
@@ -23,8 +27,6 @@ module.exports = {
 
 	async execute(interaction) {
     
-    console.log('Running');
-    
     const nutzer = interaction.options.getUser('user');
     const ms = interaction.options.getInteger('zeit');
     const grund = interaction.options.getString('grund');
@@ -44,15 +46,28 @@ module.exports = {
       }
     const zeit = msToTime(ms)
 
+    if (cooldown.has(interaction.user.id)) {
+        /// If the cooldown did not end
+        interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
+        
+      }
 
-    if (ms > '2419200000') {
+    else if (ms > '2419200000') {
 
         await interaction.reply({ content: `Bro nein, da steht doch wie viel das Maximum ist... 28 Tage/2419200000ms`, ephemeral: true })
+        cooldown.add(interaction.user.id);
+        setTimeout(() => {
+            cooldown.delete(interaction.user.id);
+        }, cooldownTime);
 
     }
     
     else if (await client.user.id == await member.user.id) {
        await interaction.reply({ content: `Bro nein, ich kann mich doch nicht selbst Timeouten`, ephemeral: true })
+       cooldown.add(interaction.user.id);
+       setTimeout(() => {
+           cooldown.delete(interaction.user.id);
+       }, cooldownTime);
     }
 
 
@@ -60,6 +75,10 @@ module.exports = {
         await nutzer.send(`Du wurdest gerade getimeouted. Du wirst erst wieder in **${zeit}** mit dem Server interagieren können. Der Grund den der Admin/Mod genannt hat: **${grund}**`);
         await member.timeout(ms);
 		await interaction.reply({ content: `Der Nutzer **${nutzer}** wird nun für **${zeit}** gesperrt`, ephemeral: true });
+        cooldown.add(interaction.user.id);
+        setTimeout(() => {
+            cooldown.delete(interaction.user.id);
+        }, cooldownTime);
         }
     },
 };

@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('@supercharge/fs');
-
+const cooldown = new Set();
+const cooldownTime = 10000; 
 module.exports = {
-    cooldown: 5,
 	data: new SlashCommandBuilder()
 		.setName('exolost')
 		.setDescription('Fucking Loser')
@@ -43,8 +43,13 @@ module.exports = {
             var consent = "true"
         }
 
+        if (cooldown.has(interaction.user.id)) {
+            /// If the cooldown did not end
+            interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
+            
+          }
 
-        if (exists === true && name.includes('Exolost') && consent === "true" ) {
+        else if (exists === true && name.includes('Exolost') && consent === "true" ) {
             delete require.cache[require.resolve(`../../userfiles/${userid}/exo.json`)]
             var { exolost } = require(`../../userfiles/${userid}/exo.json`)
             var exolostint = Number(exolost)
@@ -58,6 +63,10 @@ module.exports = {
             fs.writeFileSync(`./userfiles/${userid}/exo.json`, jsondata);
 
             await member.setNickname(newname)
+            cooldown.add(interaction.user.id);
+            setTimeout(() => {
+                cooldown.delete(interaction.user.id);
+            }, cooldownTime);
         }
 
         else if (exists === true && !name.includes('Exolost') && consent === "true") {
@@ -74,6 +83,10 @@ module.exports = {
             fs.writeFileSync(`./userfiles/${userid}/exo.json`, jsondata);
 
             await member.setNickname(newname)
+            cooldown.add(interaction.user.id);
+            setTimeout(() => {
+                cooldown.delete(interaction.user.id);
+            }, cooldownTime);
         }
 
         else if (exists === false && name.includes('Exolost') && consent === "true") {
@@ -83,6 +96,10 @@ module.exports = {
             var newname = name.replace(/⁰|¹|²|³|⁴|⁵|⁶|⁷|⁸|⁹|Exolost|[()]/g, '')
             await member.setNickname(`${newname}(Exolost${superscript})`)
             fs.writeFileSync(`./userfiles/${userid}/exo.json`, jsondata);
+            cooldown.add(interaction.user.id);
+            setTimeout(() => {
+                cooldown.delete(interaction.user.id);
+            }, cooldownTime);
         }
 
         else if (userid === '1133670597277261876' | userid === '1134558655098916974') {
@@ -91,6 +108,10 @@ module.exports = {
 
         else if ( consent === "false" ) {
             interaction.editReply('Der Nutzer hat mit **/nickconsent** angegeben, dass er das nicht möchte.')
+            cooldown.add(interaction.user.id);
+            setTimeout(() => {
+                cooldown.delete(interaction.user.id);
+            }, cooldownTime);
         }
 
         else {
@@ -100,6 +121,10 @@ module.exports = {
             
             await member.setNickname(`${name} (Exolost${superscript})`)
             fs.writeFileSync(`./userfiles/${userid}/exo.json`, jsondata);
+            cooldown.add(interaction.user.id);
+            setTimeout(() => {
+                cooldown.delete(interaction.user.id);
+            }, cooldownTime);
         }
     }
 
