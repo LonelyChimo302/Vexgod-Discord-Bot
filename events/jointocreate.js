@@ -37,7 +37,7 @@ module.exports = {
 
         const channel = newUser.channelId;
 
-        fs.writeFileSync(`./userfiles/${userid}/lastactive.json`, jsondata);
+        await fs.writeFileSync(`./userfiles/${userid}/lastactive.json`, jsondata);
 
         if (exists === true) {
             delete require.cache[require.resolve(`../userfiles/${userid}/voice.json`)]
