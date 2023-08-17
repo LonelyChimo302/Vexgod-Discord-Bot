@@ -24,7 +24,7 @@ module.exports = {
         await fs.ensureDir(`./userfiles/${userid}`)
         const path = `./userfiles/${userid}/lastactive.json`
         const exists = fs.existsSync(path)
-
+try {
         if (cooldown.has(interaction.user.id)) {
             /// If the cooldown did not end
             interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
@@ -48,5 +48,9 @@ module.exports = {
                 cooldown.delete(interaction.user.id);
             }, cooldownTime);
         }
+    }
+    catch (error) {
+        
+    }
     }
 }
