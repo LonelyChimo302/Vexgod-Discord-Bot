@@ -3,22 +3,22 @@ const { ActivityType } = require('discord.js');
 
 let statuses=[
 {
-    	name: 'Daddy Shaxx Rule34',
-		type:ActivityType.Watching
+    name: 'Daddy Shaxx Rule34',
+	type:ActivityType.Watching
 },
 
 {
-    	name: 'Mara Sov Rule34',
-		type:ActivityType.Watching
-},
-	
-{
-    	name: 'Chimo playing with my Spaghetti-Code',
+    name: 'Mara Sov Rule34',
 	type:ActivityType.Watching
 },
 	
 {
-    	name: 'Florian commiting warcrimes',
+    name: 'Chimo playing with my Spaghetti-Code',
+	type:ActivityType.Watching
+},
+	
+{
+    name: 'Florian commiting warcrimes',
 	type:ActivityType.Watching
 },
 	
@@ -93,6 +93,11 @@ let statuses=[
 },
 
 {
+	name: 'Amogus VR',
+	type:ActivityType.Playing
+},
+
+{
 	name: 'Amogus',
 	type:ActivityType.Playing
 },
@@ -111,6 +116,11 @@ let statuses=[
 	name: 'Jackbox',
 	type:ActivityType.Streaming
 },
+
+{
+	name: 'to the Voices in my Head',
+	type:ActivityType.Listening
+}
 ]
 
 module.exports = statuses
