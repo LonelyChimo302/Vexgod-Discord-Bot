@@ -9,19 +9,20 @@ const jtcchannel = '1112812765942399090';
 
 const parent = '1084190001509711873';
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-var yyyy = today.getFullYear();
-
-today = dd + '/' + mm + '/' + yyyy;
-
-var jsondata =  `{ "lastactive" : "${today}" }`
-
 module.exports = {
 	name: Events.VoiceStateUpdate,
 	once: false,
 	async execute(oldUser, newUser) {      
+        
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today = dd + '/' + mm + '/' + yyyy;
+
+        var jsondata =  `{ "lastactive" : "${today}" }`
+
 
         const userid = newUser.member.id
 
