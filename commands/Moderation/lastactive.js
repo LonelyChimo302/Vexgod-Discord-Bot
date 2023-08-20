@@ -34,6 +34,7 @@ try {
           }
 
         else if (exists === true) {
+            delete require.cache[require.resolve(`../../userfiles/${userid}/lastactive.json`)]
             var { lastactive } = require(`../../userfiles/${userid}/lastactive.json`)
 
             interaction.editReply(`Jo, der Nutzer war am ${lastactive} zuletzt in einem VC. Bitte nutze die in Discord integrierte Suche (Oben Rechts, wenn du am PC bist) um noch rauszufinden wann er das letzte mal eine Chatnachricht geschrieben hat.`)
