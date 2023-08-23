@@ -4,7 +4,7 @@ A simple Discord Bot for the Homies
 > # NEU: Version 0.7:
 > 
 > ## Hinzugefügt:
-> * Es ist nun endlich möglich sich mit **/help** eine Liste aller Commands zusenden zu lassen. Die Commands werden dort auch weitestgehenst erklärt und zukünftige werden von nun an hinzugefügt.
+> * Es ist nun endlich möglich sich mit **/help** eine Liste aller Commands zusenden zu lassen. Die Commands werden dort auch weitestgehend erklärt und zukünftige werden von nun an hinzugefügt.
 > 
 > ## Geändert:
 > * Dateistruktur angepasst
