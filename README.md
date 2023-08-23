@@ -10,7 +10,7 @@ A simple Discord Bot for the Homies
 > * Dateistruktur angepasst
 > 
 > ## Entfernt:
-> * **/ping** Command, da kein Nutzer mehr dafür vorhanden ist. (Und wenn doch, schreib ich ihn eben neu, das waren 2 Zeilen Brudi)
+> * **/ping** Command, da kein Nutzen mehr dafür vorhanden ist. (Und wenn doch, schreib ich ihn eben neu, das waren 2 Zeilen Brudi)
 > * **Herobrine**
 > 
 > # Ältere Versionen:
