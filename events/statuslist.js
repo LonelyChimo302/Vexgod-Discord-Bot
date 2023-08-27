@@ -118,7 +118,7 @@ let statuses=[
 },
 
 {
-	name: 'to the Voices in my Head',
+	name: 'the Voices in my Head',
 	type:ActivityType.Listening
 }
 ]
