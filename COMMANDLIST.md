@@ -2,6 +2,8 @@
 > ## NUR FÜR MODS UND ADMIN:
 > * **/tempjail** - Timeoutet einen Nutzer deiner Wahl für eine von dir festgelegte Zeit
 > * **/lastactive** - Zeigt dir wann ein Nutzer das letzte mal einen VC betreten hat. Schließt Chat Nachrichten nicht ein und zeigt Datum des Beitritts, nicht das Datum an dem der Nutzer den VC verlassen hat (Falls zb um 23Uhr betreten wurde und erst um 1am verlassen)
+> * **/d2nameset** Wird von Mods beim "Einstellungsgespräch" genutzt um festzuhalten wie ihr in D2 heißt, das ist nützlich, damit ihr nicht ausversehen gekickt werdet oder falls ihr Inaktiv seid und wir nun nicht wissen wen wir aus dem Clan werfen müssen.
+> * **/d2namedisplay** Zeigt den zuvor vom Mod/Supporter oder Admin abgespeicherten Namen an.
 > 
 > ## Fun Commands:
 > * **/exolost** -  Wird verwendet, wenn ein Member seine erwünschte Raid-/Dungeonexo nicht bekommen hat, jemand anderes aus dem Fireteam aber schon. Es fügt dem Nickname des ausgewählten Members einen Exolost-Counter hinzu, bei mehrfacher Verwendung steigt die Zahl im Counter jeweils um +1. Dieser Command funktioniert nicht, wenn der Name nach dem Command über 32Zeichen lang wäre oder wenn der ausgewählte Nutzer mit **/nickconsent** ausgewählt hat, dass sein Name nicht verändert werden darf.

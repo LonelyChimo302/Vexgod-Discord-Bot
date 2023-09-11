@@ -13,12 +13,12 @@ let statuses=[
 },
 	
 {
-    name: 'Chimo playing with my Spaghetti-Code',
+    name: 'Chimo play with my Spaghetti-Code',
 	type:ActivityType.Watching
 },
 	
 {
-    name: 'Florian commiting warcrimes',
+    name: 'Florian commit warcrimes',
 	type:ActivityType.Watching
 },
 	
@@ -38,7 +38,7 @@ let statuses=[
 },
 	
 {
-	name: 'Mudfrog catching insects with his tounge',
+	name: 'Mudfrog catch insects with his tounge',
 	type:ActivityType.Watching
 },
 	
@@ -68,7 +68,7 @@ let statuses=[
 },
 
 {
-	name: 'Thomas cooking...something...',
+	name: 'Thomas cook...something...',
 	type:ActivityType.Watching
 },
 
