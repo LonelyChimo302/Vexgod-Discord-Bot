@@ -1,6 +1,6 @@
 const { Events } = require('discord.js');
 const client = require("../index.js");
-const botid = '1133670597277261876'
+const botid = '1134558655098916974'
 const testchannelid = '1187727547711111199';
 const channelid = '1187808184916787381'
 
