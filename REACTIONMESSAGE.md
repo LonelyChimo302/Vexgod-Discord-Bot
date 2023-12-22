@@ -1,11 +1,11 @@
 > # Rollenauswahl
 > Hier könnt ihr euch eine Rolle auswählen, indem ihr mit dem zum Genre passenden Emoji reacted.
-> * Shooter-Games = <:gun~1:1187773164533600377>
+> * Shooter-Games = <:gunshot:1187773164533600377>
 > * Simulator-Games = <:Farming_Simulator_Logo:1187773148867870851>
 > * MMO-Games = <:warcraft20:1187773174813839530>
 > * Horror-Games = <:Freddyfatbear:1187773155473887242>
-> * MOBA-Games = <:League:1187768721377349744>
-> * Fighting-Games = <:fist~1:1187773151850020874>
+> * MOBA-Games = <:lol:1187771288538861689>
+> * Fighting-Games = <:fistangy:1187773151850020874>
 > * Sandbox-Games = <:Minecraft:1187772048102133761>
 > * VR-Games = <:VR:1187773171311591474>
 > * Alle anderen Games = <:Steam:1187773167628992564>
