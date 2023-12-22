@@ -45,7 +45,7 @@ try {
         }
 
         else if (exists === false){
-            interaction.editReply('Dieser Nutzer war entweder noch nie im VC aktiv oder das letzte mal war vorm **17.08.2023** (als dieser Command integriert wurde). Bitte nutze die in Discord integrierte Suche (Oben Rechts, wenn du am PC bist) um noch rauszufinden wann er das letzte mal eine Chatnachricht geschrieben hat.')
+            interaction.editReply('Dieser Nutzer war entweder noch nie im VC aktiv oder das letzte mal war vorm **11.09.2023** (als alle Userfiles zurückgesetzt wurden). Bitte nutze die in Discord integrierte Suche (Oben Rechts, wenn du am PC bist) um noch rauszufinden wann er das letzte mal eine Chatnachricht geschrieben hat.')
             cooldown.add(interaction.user.id);
             setTimeout(() => {
                 cooldown.delete(interaction.user.id);
