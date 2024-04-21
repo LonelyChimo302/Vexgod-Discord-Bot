@@ -63,7 +63,7 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		else {
 			console.log('Im up')
 		}    
-		await client.channels.cache.get(reactionchannel).bulkDelete(10)
+/*		await client.channels.cache.get(reactionchannel).bulkDelete(10)
 		const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
 		await reactionmessage.react(Shooter)
 		await reactionmessage.react(Simulator)
@@ -74,6 +74,6 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(Sandbox)
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
-		await reactionmessage.react(Destiny)
+		await reactionmessage.react(Destiny)*/
 }
 }
