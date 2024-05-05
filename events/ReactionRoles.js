@@ -34,6 +34,9 @@ const VRrole = '1187809479157362739'
 const Other = '1187773167628992564';
 const Otherrole = '1187809553157472286'
 
+const RPG = '1116463855955091518';
+const RPGrole = '1236744003299311769'
+
 module.exports = {
 	name: Events.MessageReactionAdd,
     once: false,
@@ -79,6 +82,9 @@ module.exports = {
             }
             else if (reaction.emoji.id === Fighting){
                 await member.roles.add(Fightingrole)
+            }
+            else if (reaction.emoji.id === RPG){
+                await member.roles.add(RPGrole)
             }
             else {
             }

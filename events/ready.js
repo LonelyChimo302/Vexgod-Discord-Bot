@@ -32,6 +32,8 @@ const VR = '1187773171311591474';
 
 const Other = '1187773167628992564';
 
+const RPG = '1116463855955091518';
+
 module.exports = {
 	name: Events.ClientReady,
 	once: false,
@@ -75,5 +77,6 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
 		await reactionmessage.react(Destiny)
+		await reactionmessage.react(RPG)
 }
 }
