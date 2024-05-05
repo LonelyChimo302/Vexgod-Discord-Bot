@@ -70,6 +70,7 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(Shooter)
 		await reactionmessage.react(Simulator)
 		await reactionmessage.react(MMO)
+		await reactionmessage.react(RPG)
 		await reactionmessage.react(Horror)
 		await reactionmessage.react(MOBA)
 		await reactionmessage.react(Fighting)
@@ -77,6 +78,5 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
 		await reactionmessage.react(Destiny)
-		await reactionmessage.react(RPG)
 }
 }

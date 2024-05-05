@@ -3,6 +3,7 @@
 > * Shooter-Games = <:gunshot:1187773164533600377>
 > * Simulator-Games = <:Farming_Simulator_Logo:1187773148867870851>
 > * MMO-Games = <:warcraft20:1187773174813839530>
+> * RPG-Games = <:D20:1116463855955091518>
 > * Horror-Games = <:Freddyfatbear:1187773155473887242>
 > * MOBA-Games = <:lol:1187771288538861689>
 > * Fighting-Games = <:fistangy:1187773151850020874>
