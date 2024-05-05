@@ -25,11 +25,11 @@ module.exports = {
             answers: [
                 {
                     text: 'Yee',
-                    emoji: '1187768631430500362',
+                    emoji: '1116464522379665458',
                 },
                 {
                     text: 'Nö',
-                    emoji: '1187768721377349744',
+                    emoji: '1116464573797638145',
                 },
             ],
             duration: 48, // In Stunden
