@@ -9,4 +9,4 @@
 > 
 > Wie bereits erwähnt, diese Videos werden nirgends öffentlich zu finden sein, sie werden ungelistet auf Youtube hochgeladen um sie jederzeit angucken zu können, nur Leute mit dem Link können sie sehen.
 > 
-> Für die bisherigen Best-Ofs einfach im Ankündigunschannel auf die angepinnten Nachrichten zugreifen.
+> Für die bisherigen Best-Ofs einfach im Ankündigungs-Channel auf die angepinnten Nachrichten zugreifen.
