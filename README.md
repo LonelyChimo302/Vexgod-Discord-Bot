@@ -1,7 +1,19 @@
 # Vexgod-Discord-Bot
 A simple Discord Bot for the Homies
 
-> # NEU: Version 1.0:
+> # NEU: Version 1.1:
+> 
+> ## Hinzugefügt:
+> * Ihr findet jetzt einen kurzen Text im Rollenvergabe-Channel bei dem ihr euch ne Rolle abholen könnt mit der ihr nicht mehr in Best-Of Clips erscheinen werdet.
+> 
+> ## Geändert:
+> 
+> 
+> ## Entfernt:
+> * **Herobrine**
+> 
+> # Ältere Versionen:
+> ## Version 1.0:
 > 
 > ## Hinzugefügt:
 > * Ein Emoterequest-Channel existiert ab jetzt. Postet dort Bilder rein die Sticker oder Emote werden sollen. MP3/OGG Dateien fürs Soundboard könnt ihr dort auch reinschicken. Der Bot erstellt dann eigenständig einen Poll mit 48h Laufzeit.
@@ -12,7 +24,6 @@ A simple Discord Bot for the Homies
 > ## Entfernt:
 > * **Herobrine**
 > 
-> # Ältere Versionen:
 > ## Version 0.9:
 > 
 > ## Hinzugefügt:

@@ -12,6 +12,8 @@ const reactionchannel = '1187808184916787381';
 
 const reactionmessagetext = fs.readFileSync('./REACTIONMESSAGE.md').toString();
 
+const consentmessagetext = fs.readFileSync('./CONSENTMESSAGE.md').toString();
+
 const MOBA = '1187771288538861689';
 
 const Destiny = '1116463546608390245';
@@ -33,6 +35,10 @@ const VR = '1187773171311591474';
 const Other = '1187773167628992564';
 
 const RPG = '1116463855955091518';
+
+const Amogusded = '1164163602433974312';
+
+const Amogus = '1164163598763966564'
 
 module.exports = {
 	name: Events.ClientReady,
@@ -78,5 +84,9 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
 		await reactionmessage.react(Destiny)
+
+		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
+		await consentmessage.react(Amogus)
+		await consentmessage.react(Amogusded)
 }
 }

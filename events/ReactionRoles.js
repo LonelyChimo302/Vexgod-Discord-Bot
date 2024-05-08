@@ -37,6 +37,9 @@ const Otherrole = '1187809553157472286'
 const RPG = '1116463855955091518';
 const RPGrole = '1236744003299311769'
 
+const no = '1164163602433974312';
+const consentrole = '1237782649477664839'
+
 module.exports = {
 	name: Events.MessageReactionAdd,
     once: false,
@@ -86,7 +89,11 @@ module.exports = {
             else if (reaction.emoji.id === RPG){
                 await member.roles.add(RPGrole)
             }
+            else if (reaction.emoji.id === no){
+                await member.roles.add(consentrole)
+            }
             else {
+                
             }
         }
 
