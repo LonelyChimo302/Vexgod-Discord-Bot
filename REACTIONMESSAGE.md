@@ -8,6 +8,7 @@
 > * MOBA-Games = <:lol:1187771288538861689>
 > * Fighting-Games = <:fistangy:1187773151850020874>
 > * Sandbox-Games = <:Minecraft:1187772048102133761>
+> * Racing-Games = <:Lightning_McQueen:1261600995100725248>
 > * VR-Games = <:VR:1187773171311591474>
 > * Alle anderen Games = <:Steam:1187773167628992564>
 > 

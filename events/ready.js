@@ -30,6 +30,8 @@ const Fighting = '1187773151850020874';
 
 const Sandbox = '1187772048102133761';
 
+const Racing = '1261600995100725248';
+
 const VR = '1187773171311591474';
 
 const Other = '1187773167628992564';
@@ -81,6 +83,7 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(MOBA)
 		await reactionmessage.react(Fighting)
 		await reactionmessage.react(Sandbox)
+		await reactionmessage.react(Racing)
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
 		await reactionmessage.react(Destiny)

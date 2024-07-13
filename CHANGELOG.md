@@ -1,10 +1,10 @@
 # Mommy-Mara
 A simple Discord Bot for the Homies
 
-> # NEU: Version 1.1:
+> # NEU: Version 1.2:
 > 
 > ## Hinzugefügt:
-> * Ihr findet jetzt einen kurzen Text im Rollenvergabe-Channel bei dem ihr euch ne Rolle abholen könnt mit der ihr nicht mehr in Best-Of Clips erscheinen werdet.
+> * Eine Rolle, sowie Channel und Reactionemote für die Rollenwahl wurde für Racing-Games hinzugefügt.
 > 
 > ## Geändert:
 > 
@@ -14,15 +14,15 @@ A simple Discord Bot for the Homies
 > 
 > # Ältere Versionen:
 > 
-> ## Version 1.0:
+> ## Version 1.1:
 > 
-> ## Hinzugefügt:
-> * Ein Emoterequest-Channel existiert ab jetzt. Postet dort Bilder rein die Sticker oder Emote werden sollen. MP3/OGG Dateien fürs Soundboard könnt ihr dort auch reinschicken. Der Bot erstellt dann eigenständig einen Poll mit 48h Laufzeit.
+> ### Hinzugefügt:
+> * Ihr findet jetzt einen kurzen Text im Rollenvergabe-Channel bei dem ihr euch ne Rolle abholen könnt mit der ihr nicht mehr in Best-Of Clips erscheinen werdet.
 > 
-> ## Geändert:
-> * Rollenwahl wurde um RPG erweitert
+> ### Geändert:
 > 
-> ## Entfernt:
+> 
+> ### Entfernt:
 > * **Herobrine**
 > 
 > [Den kompletten Changelog von V 0.1 bis jetzt findest du hier](<https://github.com/LonelyChimo302/Vexgod-Discord-Bot>)

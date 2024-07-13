@@ -1,7 +1,19 @@
 # Vexgod-Discord-Bot
 A simple Discord Bot for the Homies
 
-> # NEU: Version 1.1:
+> # NEU: Version 1.2:
+> 
+> ## Hinzugefügt:
+> * Eine Rolle, sowie Channel und Reactionemote für die Rollenwahl wurde für Racing-Games hinzugefügt.
+> 
+> ## Geändert:
+> 
+> 
+> ## Entfernt:
+> * **Herobrine**
+> 
+> # Ältere Versionen:
+> ## Version 1.1:
 > 
 > ## Hinzugefügt:
 > * Ihr findet jetzt einen kurzen Text im Rollenvergabe-Channel bei dem ihr euch ne Rolle abholen könnt mit der ihr nicht mehr in Best-Of Clips erscheinen werdet.
@@ -12,27 +24,26 @@ A simple Discord Bot for the Homies
 > ## Entfernt:
 > * **Herobrine**
 > 
-> # Ältere Versionen:
 > ## Version 1.0:
 > 
-> ## Hinzugefügt:
+> ### Hinzugefügt:
 > * Ein Emoterequest-Channel existiert ab jetzt. Postet dort Bilder rein die Sticker oder Emote werden sollen. MP3/OGG Dateien fürs Soundboard könnt ihr dort auch reinschicken. Der Bot erstellt dann eigenständig einen Poll mit 48h Laufzeit.
 > 
-> ## Geändert:
+> ### Geändert:
 > * Rollenwahl wurde um RPG erweitert
 > 
-> ## Entfernt:
+> ### Entfernt:
 > * **Herobrine**
 > 
 > ## Version 0.9:
 > 
-> ## Hinzugefügt:
+> ### Hinzugefügt:
 > * Ein Channel für Rollenvergabe ist nun vorhanden. In diesem könnt ihr euch aussuchen, welche Channel ihr sehen wollt und welche Pings ihr erhalten möchtet.
 > 
-> ## Geändert:
+> ### Geändert:
 > * Der Willkommenstext des Bots ist nun angepasst und weist auf den Rollenvergabechannel hin.
 > 
-> ## Entfernt:
+> ### Entfernt:
 > * **Herobrine**
 > 
 > ## Version 0.8:

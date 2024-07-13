@@ -28,6 +28,9 @@ const Fightingrole = '1187808991447875694'
 const Sandbox = '1187772048102133761';
 const Sandboxrole = '1187809386643595284'
 
+const racing = '1261600995100725248'
+const racingrole = '1261601324714299413'
+
 const VR = '1187773171311591474';
 const VRrole = '1187809479157362739'
 
@@ -91,6 +94,9 @@ module.exports = {
             }
             else if (reaction.emoji.id === no){
                 await member.roles.add(consentrole)
+            }
+            else if (reaction.emoji.id === racing){
+                await member.roles.add(racingrole)
             }
             else {
                 
