@@ -72,7 +72,8 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 
 		else {
 			console.log('Im up')
-		}    
+		}
+	
 		await client.channels.cache.get(reactionchannel).bulkDelete(10)
 		const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
 		await reactionmessage.react(Shooter)
