@@ -16,8 +16,6 @@ const consentmessagetext = fs.readFileSync('./CONSENTMESSAGE.md').toString();
 
 const MOBA = '1187771288538861689';
 
-const Destiny = '1116463546608390245';
-
 const Shooter = '1187773164533600377';
 
 const Simulator = '1187773148867870851';
@@ -87,7 +85,6 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		await reactionmessage.react(Racing)
 		await reactionmessage.react(VR)
 		await reactionmessage.react(Other)
-		await reactionmessage.react(Destiny)
 
 		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
 		await consentmessage.react(Amogus)

@@ -12,4 +12,3 @@
 > * VR-Games = <:VR:1187773171311591474>
 > * Alle anderen Games = <:Steam:1187773167628992564>
 > 
-> ## Für die Leute, welche die Destiny Channels sehen möchten und für Raids und andere Sachen pings erhalten möchten gibt es noch das <:Destiny:1116463546608390245> Emote.

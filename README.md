@@ -1,27 +1,28 @@
 # Vexgod-Discord-Bot
 A simple Discord Bot for the Homies
 
-> # NEU: Version 1.2:
+> # NEU: Version 1.3:
 > 
 > ## Hinzugefügt:
-> * Eine Rolle, sowie Channel und Reactionemote für die Rollenwahl wurde für Racing-Games hinzugefügt.
+> * Die alten D2 Raid- und Dungeonchannels, welche Guides, Calls und Tipps beinhaltet haben, wurden aus Erhaltungszwecken auf einen anderen Server verpflanzt. Bei Nutzung von /d2archiv spuckt der Bot einen Invitelink aus.
 > 
 > ## Geändert:
-> 
+> * Destiny wird nun wie jedes andere Spiel behandelt. Die Extrachannels und Extrarolle sind nun Gone. Wer noch Mitspieler sucht kann absofort den MMO oder Shooter Channel + die jeweilige Rolle dafür nutzen.
+> * Im gleichen Atemzug verabschieden wir uns heute von Raidexperte Rasputin / den Charlemange Bot. Er hat uns treue Dienste geleistet, welche nun, so schade es auch ist, nicht mehr von Nöten sind.
 > 
 > ## Entfernt:
 > * **Herobrine**
 > 
 > # Ältere Versionen:
-> ## Version 1.1:
+> ## Version 1.2:
 > 
-> ## Hinzugefügt:
-> * Ihr findet jetzt einen kurzen Text im Rollenvergabe-Channel bei dem ihr euch ne Rolle abholen könnt mit der ihr nicht mehr in Best-Of Clips erscheinen werdet.
+> ### Hinzugefügt:
+> * Eine Rolle, sowie Channel und Reactionemote für die Rollenwahl wurde für Racing-Games hinzugefügt.
 > 
-> ## Geändert:
+> ### Geändert:
 > 
 > 
-> ## Entfernt:
+> ### Entfernt:
 > * **Herobrine**
 > 
 > ## Version 1.0:
@@ -71,7 +72,7 @@ A simple Discord Bot for the Homies
 > 
 > ## Version 0.6:
 > 
-> ## Hinzugefügt:
+> ### Hinzugefügt:
 > * Neuer Command für die Mods **/lastactive (Username)** zeigt an wann der ausgewählte User zuletzt im Voicechat aktiv war. Nützlich falls man "aufräumen" möchte und nicht weiß ob jemand je aktiv war.
 > * Textchat wird dabei nicht beachtet, da man das in der bei Discord oben rechts (PC) integrierten Suche rausfinden kann (from: @**username**)
 > 

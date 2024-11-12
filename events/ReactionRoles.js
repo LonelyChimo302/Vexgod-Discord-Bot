@@ -7,9 +7,6 @@ const channelid = '1187808184916787381'
 const MOBA = '1187771288538861689';
 const MOBArole = '1187808893859024986'
 
-const Destiny = '1116463546608390245';
-const Destinyrole = '1187809050449166486'
-
 const Shooter = '1187773164533600377';
 const Shooterrole = '1187809106829000806'
 
@@ -59,10 +56,7 @@ module.exports = {
         }  
         else if (reaction.message.channelId === channelid ){
 
-            if (reaction.emoji.id === Destiny){
-                await member.roles.add(Destinyrole)
-            }
-            else if (reaction.emoji.id === MOBA){
+            if (reaction.emoji.id === MOBA){
                 await member.roles.add(MOBArole)
             }
             else if (reaction.emoji.id === Shooter){

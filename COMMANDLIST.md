@@ -12,6 +12,7 @@
 > * **/changelog** - Zeigt dir den neusten Changelog
 > * **/garrysmod** - Gibt dir eine Liste der Modpacks die der Moderator "Florian" erstellt hat, welche wir nutzen, wenn wir Garrysmod spielen.
 > * **/help** - Zeigt dir diese Liste
+> * **/d2archiv** - Schickt dir einen Invitelink zum D2-Archiv. (Wenn du wissen möchtest was das ist, schreib einem Admin oder nutze **/changelog**, im Version 1.3 Changelog stehts genauer)
 > 
 > ## Settings Commands:
 > ### (Einstellungen die der Nutzer treffen kann)
