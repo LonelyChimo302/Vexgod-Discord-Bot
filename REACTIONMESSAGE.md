@@ -11,4 +11,3 @@
 > * Racing-Games = <:Lightning_McQueen:1261600995100725248>
 > * VR-Games = <:VR:1187773171311591474>
 > * Alle anderen Games = <:Steam:1187773167628992564>
-> 
