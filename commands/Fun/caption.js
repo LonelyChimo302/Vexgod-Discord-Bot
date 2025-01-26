@@ -81,7 +81,10 @@ try {
           
         else if ( bottom.length > 77 || top.length > 77) {
             await interaction.editReply('Einer oder beide Texte sind zu lang. Versuch ihn zu kürzen.')
-            console.log('zu lang')
+        }
+
+        else if (filetype.includes('webp') === true) {
+            await interaction.editReply('Nein. Webp aktzeptieren wir hier nicht')
         }
 
 
