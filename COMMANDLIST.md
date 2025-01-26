@@ -7,6 +7,8 @@
 > 
 > ## Fun Commands:
 > * **/exolost** -  Wird verwendet, wenn ein Member seine erwünschte Raid-/Dungeonexo nicht bekommen hat, jemand anderes aus dem Fireteam aber schon. Es fügt dem Nickname des ausgewählten Members einen Exolost-Counter hinzu, bei mehrfacher Verwendung steigt die Zahl im Counter jeweils um +1. Dieser Command funktioniert nicht, wenn der Name nach dem Command über 32Zeichen lang wäre oder wenn der ausgewählte Nutzer mit **/nickconsent** ausgewählt hat, dass sein Name nicht verändert werden darf.
+> * **/caption** - Ein eigens gebastelter Memegenerator. Bild hochladen, Toptext und Bottomtext schreiben, das Bild wird generiert. Bilder werden aus technischen limitierungen auf 1000x1000 gequetscht. Text könnte dezentriert sein/wirken, node-canvas ist nicht
+> besonders gut im zentieren.
 > 
 > ## Info Commands:
 > * **/changelog** - Zeigt dir den neusten Changelog
