@@ -61,8 +61,6 @@ try {
         const bottom = addLineBreaks(bottomraw, 25)
 
         const bottomLines = bottom.split('\n').length;
-
-        const username = interaction.member.displayName
         
         const userid = interaction.member.id
 
@@ -91,7 +89,7 @@ try {
 
             var sImage = `${imgurl}`;
 
-            var sSave = `./userfiles/${userid}/${username}-captioned.png`;
+            var sSave = `./userfiles/${userid}/${userid}-captioned.png`;
 
             registerFont('./font/19927_impact.ttf', { family: "Impact Condensed" });
 
