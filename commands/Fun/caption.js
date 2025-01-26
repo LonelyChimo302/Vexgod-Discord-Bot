@@ -84,7 +84,7 @@ try {
         }
 
         else if (filetype.includes('webp') === true) {
-            await interaction.editReply('Nein. Webp aktzeptieren wir hier nicht')
+            await interaction.editReply('Nein. Webp akzeptieren wir hier nicht.')
         }
 
 
