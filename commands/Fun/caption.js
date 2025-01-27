@@ -150,8 +150,8 @@ try {
             await interaction.editReply('Einer oder beide Texte sind zu lang. Versuch ihn zu kürzen.')
         }
 
-        else if (filetype.includes('webp') === true) {
-            await interaction.editReply('Nein. Webp akzeptieren wir hier nicht.')
+        else if (filetype.includes('webp') === true || filetype.includes('gif') === true) {
+            await interaction.editReply('Nein. webp und gif akzeptieren wir hier nicht.')
         }
 
 
