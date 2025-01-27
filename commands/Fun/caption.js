@@ -63,7 +63,6 @@ async function deepFryEffect(inputPath, outputPath) {
     // Ergebnis speichern
     const buffer = canvas.toBuffer('image/png');
     fs.writeFileSync(outputPath, buffer);
-    console.log(`Deepfry-Bild wurde gespeichert: ${outputPath}`);
 }
 
 function sleep(ms) {
@@ -96,47 +95,48 @@ module.exports = {
                 .setDescription('Das Bild was gecaptioned werden soll')
                 .setRequired(true))
         .addStringOption(option =>
-            option.setName('toptext')
-                .setDescription('Der Toptext')
-                .setRequired(true))
-        .addStringOption(option =>
-            option.setName('bottomtext')
-                .setDescription('Der Bottomtext')
-                .setRequired(true))
-        .addStringOption(option =>
             option.setName('deepfry')
                 .setDescription('Deepfry?')
                 .setRequired(true)
                 .addChoices(
                     { name: 'Ja', value: 'true'},
                     { name: 'Nein', value: 'false'}
-                )),
+                ))
+        .addStringOption(option =>
+            option.setName('toptext')
+                .setDescription('Der Toptext')
+                .setRequired(false))
+        .addStringOption(option =>
+            option.setName('bottomtext')
+                .setDescription('Der Bottomtext')
+                .setRequired(false)),
 
 	async execute(interaction) {
 try {
 
         await interaction.deferReply();
 
-        const topraw = interaction.options.getString('toptext')
+        var topraw = interaction.options.getString('toptext')
 
-        const top = addLineBreaks(topraw, 25)
+        if ( topraw === null ) {
+            var topraw = ''
+        }
 
-        const bottomraw = interaction.options.getString('bottomtext')
+        var bottomraw = interaction.options.getString('bottomtext')
 
-        const bottom = addLineBreaks(bottomraw, 25)
+        if ( bottomraw === null) {
+            var bottomraw = ''
+        }
 
-        const bottomLines = bottom.split('\n').length;
-        
-        const userid = interaction.member.id
+        var userid = interaction.member.id
 
-        const file = interaction.options.getAttachment('image')
+        var file = interaction.options.getAttachment('image')
 
-        const filetype = file.contentType
+        var filetype = file.contentType
 
-        const imgurl = file.url
+        var imgurl = file.url
 
-        const deepfry = interaction.options.getString('deepfry')
-
+        var deepfry = interaction.options.getString('deepfry')
 
         await fs.ensureDir(`./userfiles/${userid}/`)
 
@@ -145,9 +145,8 @@ try {
             interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
             
           }
-        
           
-        else if ( bottom.length > 77 || top.length > 77) {
+        else if ( bottomraw.length > 77 || topraw.length > 77) {
             await interaction.editReply('Einer oder beide Texte sind zu lang. Versuch ihn zu kürzen.')
         }
 
@@ -158,6 +157,12 @@ try {
 
         else if (filetype.includes('image') === true) {
 
+            var top = addLineBreaks(topraw, 25);
+
+            var bottom = addLineBreaks(bottomraw, 25);
+
+            var bottomLines = bottom.split('\n').length;
+
             var sImage = `${imgurl}`;
 
             var sSave = `./userfiles/${userid}/${userid}-captioned.png`;
@@ -166,93 +171,144 @@ try {
 
             registerFont('./font/19927_impact.ttf', { family: "Impact Condensed" });
 
-            loadImage(sImage).then(img => {
-
-                const canvas = createCanvas(1000, 1000);
-                const ctx = canvas.getContext('2d');
-                
-                ctx.drawImage(img, 0, 0, 1000, 1000);
-
-                ctx.font = '72px Impact';
-                ctx.fillStyle = "rgb(255, 255, 255)";
-                ctx.lineWidth = 5;
-                ctx.strokeStyle = "rgb(0, 0, 0)";
-
-                let toptd = ctx.measureText(top);
-                let toptw = toptd.width;
-                let topth = toptd.actualBoundingBoxAscent + toptd.actualBoundingBoxDescent;
-
-                let bottd = ctx.measureText(bottom);
-                let bottw = bottd.width;
-                let botth = bottd.actualBoundingBoxAscent + bottd.actualBoundingBoxDescent;
-
-                let topx = Math.floor((1000 - toptw) / 2);
-                let topy = Math.floor((1000 + topth) / 12);
-                ctx.strokeText(top, topx, topy);
-                ctx.fillText(top, topx, topy);
-
-                if ( bottomLines === 1) {
-                let botx = Math.floor((1000 - bottw) / 2);
-                let boty = Math.floor((1000 + botth) - 100);
-                ctx.strokeText(bottom, botx, boty);
-                ctx.fillText(bottom, botx, boty);
-                }
-                
-                else if ( bottomLines === 2) {
-                let botx = Math.floor((1000 - bottw) / 2);
-                let boty = Math.floor((1000 + botth) - 250);
-                ctx.strokeText(bottom, botx, boty);
-                ctx.fillText(bottom, botx, boty);
-                }
-
-                else if ( bottomLines === 3) {
-                    let botx = Math.floor((1000 - bottw) / 2);
-                    let boty = Math.floor((1000 + botth) - 450);
-                    ctx.strokeText(bottom, botx, boty);
-                    ctx.fillText(bottom, botx, boty);
-                    }
-
-                const out = fs.createWriteStream(sSave);
-                const stream = canvas.createPNGStream();
-
-                stream.pipe(out);
-
-            })
-
-            if ( deepfry === 'true' ) {
-
+            if ( topraw.length === 0 && bottomraw.length === 0 && deepfry === 'false' ) {
+                interaction.editReply('Wenn du es nicht verändern willst, lad das Bild doch selbst hoch lol.')
+            }
+            
+            else if ( topraw.length === 0 && bottomraw.length === 0 && deepfry === 'true' ) {
+    
+                var sImage = `${imgurl}`;
+    
+                var sSave = `./userfiles/${userid}/${userid}-captioned.png`;
+    
+                var deepfryout = `./userfiles/${userid}/${userid}-deepfried.png`;
+    
+                loadImage(sImage).then(img => {
+    
+                    const canvas = createCanvas(1000, 1000);
+                    const ctx = canvas.getContext('2d');
+                    
+                    ctx.drawImage(img, 0, 0, 1000, 1000);
+    
+                    const out = fs.createWriteStream(sSave);
+                    const stream = canvas.createPNGStream();
+    
+                    stream.pipe(out);
+                })
+    
                 await sleep(5000);
-
+    
                 deepFryEffect(sSave, deepfryout)
-
+    
                 await sleep(5000);
-  
+      
                 await interaction.editReply({ content: null, files: [`${deepfryout}`] });
-
+    
                 await fs.remove(`${sSave}`)
-
+    
                 await fs.remove(`${deepfryout}`)
-
+    
                 cooldown.add(interaction.user.id);
                 setTimeout(() => {
                     cooldown.delete(interaction.user.id);
                 }, cooldownTime);
-
+    
             }
-            
-            else {
 
-                await sleep(5000);
-  
-                await interaction.editReply({ content: null, files: [`${sSave}`] });
+            else if (topraw.length > 0 || bottomraw.length > 0) {
 
-                await fs.remove(`${sSave}`)
+                loadImage(sImage).then(img => {
 
-                cooldown.add(interaction.user.id);
+                    const canvas = createCanvas(1000, 1000);
+                    const ctx = canvas.getContext('2d');
+                    
+                    ctx.drawImage(img, 0, 0, 1000, 1000);
+    
+                    ctx.font = '72px Impact';
+                    ctx.fillStyle = "rgb(255, 255, 255)";
+                    ctx.lineWidth = 5;
+                    ctx.strokeStyle = "rgb(0, 0, 0)";
+    
+                    let toptd = ctx.measureText(top);
+                    let toptw = toptd.width;
+                    let topth = toptd.actualBoundingBoxAscent + toptd.actualBoundingBoxDescent;
+    
+                    let bottd = ctx.measureText(bottom);
+                    let bottw = bottd.width;
+                    let botth = bottd.actualBoundingBoxAscent + bottd.actualBoundingBoxDescent;
+    
+                    let topx = Math.floor((1000 - toptw) / 2);
+                    let topy = Math.floor((1000 + topth) / 12);
+                    ctx.strokeText(top, topx, topy);
+                    ctx.fillText(top, topx, topy);
+    
+                    if ( bottomLines === 1) {
+                    let botx = Math.floor((1000 - bottw) / 2);
+                    let boty = Math.floor((1000 + botth) - 100);
+                    ctx.strokeText(bottom, botx, boty);
+                    ctx.fillText(bottom, botx, boty);
+                    }
+                    
+                    else if ( bottomLines === 2) {
+                    let botx = Math.floor((1000 - bottw) / 2);
+                    let boty = Math.floor((1000 + botth) - 250);
+                    ctx.strokeText(bottom, botx, boty);
+                    ctx.fillText(bottom, botx, boty);
+                    }
+    
+                    else if ( bottomLines === 3) {
+                        let botx = Math.floor((1000 - bottw) / 2);
+                        let boty = Math.floor((1000 + botth) - 450);
+                        ctx.strokeText(bottom, botx, boty);
+                        ctx.fillText(bottom, botx, boty);
+                        }
+                    else {
+
+                    }
+    
+                    const out = fs.createWriteStream(sSave);
+                    const stream = canvas.createPNGStream();
+    
+                    stream.pipe(out);
+    
+                })
+    
+                if ( deepfry === 'true' ) {
+    
+                    await sleep(5000);
+    
+                    deepFryEffect(sSave, deepfryout)
+    
+                    await sleep(5000);
+      
+                    await interaction.editReply({ content: null, files: [`${deepfryout}`] });
+    
+                    await fs.remove(`${sSave}`)
+    
+                    await fs.remove(`${deepfryout}`)
+    
+                    cooldown.add(interaction.user.id);
                     setTimeout(() => {
                         cooldown.delete(interaction.user.id);
                     }, cooldownTime);
-        }
+    
+                }
+                
+                else {
+    
+                    await sleep(5000);
+      
+                    await interaction.editReply({ content: null, files: [`${sSave}`] });
+    
+                    await fs.remove(`${sSave}`)
+    
+                    cooldown.add(interaction.user.id);
+                        setTimeout(() => {
+                            cooldown.delete(interaction.user.id);
+                        }, cooldownTime);
+            }
+            }
+            
         }
 
         else if (filetype.includes('image') === false){
