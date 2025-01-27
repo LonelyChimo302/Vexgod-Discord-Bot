@@ -88,6 +88,6 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 
 		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
 		await consentmessage.react(Amogus)
-		await consentmessage.react(Amogusded)
+		await consentmessage.react(Amogusded) 
 }
 }

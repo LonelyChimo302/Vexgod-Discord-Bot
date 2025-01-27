@@ -4,7 +4,7 @@ A simple Discord Bot for the Homies
 > # NEU: Version 1.4:
 > 
 > ## Hinzugefügt:
-> * Ein neuer Command, ein ganzes Wochenende an Arbeit und dennoch nicht perfekt: Der /caption command ist gelandet und gibt euch die Möglichkeit eigene Memes aus jedem beliebigen Bild zu machen.
+> * Ein neuer Command, ein ganzes Wochenende an Arbeit und dennoch nicht perfekt: Der /caption command ist gelandet und gibt euch die Möglichkeit eigene Memes aus jedem beliebigen Bild zu machen. Optional ist auch ein Deepfry-Effekt
 > 
 > ## Geändert:
 > 

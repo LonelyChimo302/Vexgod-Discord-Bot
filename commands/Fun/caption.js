@@ -8,6 +8,64 @@ const cooldownTime = 10000;
 
 const { registerFont ,createCanvas, loadImage } = require('canvas');
 
+
+async function deepFryEffect(inputPath, outputPath) {
+    const canvas = createCanvas(1000, 1000);
+    const ctx = canvas.getContext('2d');
+
+    // Hintergrundbild laden
+    const image = await loadImage(inputPath);
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    // Bilddaten extrahieren
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    // Deepfry-Farbeffekte anwenden
+    for (let i = 0; i < data.length; i += 4) {
+        // Verstärkte Farben
+        data[i] = Math.min(255, data[i] * 3); // Rot
+        data[i + 1] = Math.min(255, data[i + 1] * 2.5); // Grün
+        data[i + 2] = Math.min(255, data[i + 2] * 3); // Blau
+
+        // Helle Stellen überbetonen
+        if (data[i] > 220 && data[i + 1] > 220 && data[i + 2] > 220) {
+            data[i] = 255;
+            data[i + 1] = 255;
+            data[i + 2] = 255;
+        }
+
+        // Hinzufügen von starkem Rauschen
+        const noise = Math.random() * 150 - 75; // ±75
+        data[i] = Math.min(255, Math.max(0, data[i] + noise)); // Rot
+        data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise)); // Grün
+        data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise)); // Blau
+    }
+
+    // Geänderte Bilddaten zurücksetzen
+    ctx.putImageData(imageData, 0, 0);
+
+    // Starke Vignette hinzufügen
+    const gradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, canvas.width / 3,
+        canvas.width / 2, canvas.height / 2, canvas.width / 1.1
+    );
+    gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.8)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Intensives Schärfen hinzufügen (kein echter Filter hier, aber als Pseudo-Effekt machbar)
+    ctx.globalCompositeOperation = 'overlay';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Ergebnis speichern
+    const buffer = canvas.toBuffer('image/png');
+    fs.writeFileSync(outputPath, buffer);
+    console.log(`Deepfry-Bild wurde gespeichert: ${outputPath}`);
+}
+
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
@@ -44,8 +102,15 @@ module.exports = {
         .addStringOption(option =>
             option.setName('bottomtext')
                 .setDescription('Der Bottomtext')
-                .setRequired(true)),
-
+                .setRequired(true))
+        .addStringOption(option =>
+            option.setName('deepfry')
+                .setDescription('Deepfry?')
+                .setRequired(true)
+                .addChoices(
+                    { name: 'Ja', value: 'true'},
+                    { name: 'Nein', value: 'false'}
+                )),
 
 	async execute(interaction) {
 try {
@@ -70,6 +135,9 @@ try {
 
         const imgurl = file.url
 
+        const deepfry = interaction.options.getString('deepfry')
+
+
         await fs.ensureDir(`./userfiles/${userid}/`)
 
         if (cooldown.has(interaction.user.id)) {
@@ -93,6 +161,8 @@ try {
             var sImage = `${imgurl}`;
 
             var sSave = `./userfiles/${userid}/${userid}-captioned.png`;
+
+            var deepfryout = `./userfiles/${userid}/${userid}-deepfried.png`;
 
             registerFont('./font/19927_impact.ttf', { family: "Impact Condensed" });
 
@@ -149,16 +219,40 @@ try {
 
             })
 
-            await sleep(5000);
+            if ( deepfry === 'true' ) {
+
+                await sleep(5000);
+
+                deepFryEffect(sSave, deepfryout)
+
+                await sleep(5000);
   
-            await interaction.editReply({ content: null, files: [`${sSave}`] });
+                await interaction.editReply({ content: null, files: [`${deepfryout}`] });
 
-            await fs.remove(`${sSave}`)
+                await fs.remove(`${sSave}`)
 
-            cooldown.add(interaction.user.id);
-            setTimeout(() => {
-                cooldown.delete(interaction.user.id);
-            }, cooldownTime);
+                await fs.remove(`${deepfryout}`)
+
+                cooldown.add(interaction.user.id);
+                setTimeout(() => {
+                    cooldown.delete(interaction.user.id);
+                }, cooldownTime);
+
+            }
+            
+            else {
+
+                await sleep(5000);
+  
+                await interaction.editReply({ content: null, files: [`${sSave}`] });
+
+                await fs.remove(`${sSave}`)
+
+                cooldown.add(interaction.user.id);
+                    setTimeout(() => {
+                        cooldown.delete(interaction.user.id);
+                    }, cooldownTime);
+        }
         }
 
         else if (filetype.includes('image') === false){
