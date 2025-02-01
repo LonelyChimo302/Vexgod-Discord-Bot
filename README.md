@@ -12,7 +12,7 @@ A simple Discord Bot for the Homies
 > * **/caption** ist nun **/meme**, da dieser Command nun auch ohne Captions funktioniert und auch Tieffritieren kann, weitere Funktionen für diesen Command sollen irgendwann folgen.
 > * **/meme**'s Deepfry-Effekt wurde angepasst um alle Farben gleichmäßig zu übersättigen und die Helligkeitserhöhung wurde etwas runtergedreht, dadurch sind die meisten Bilder jetzt nicht mehr übertrieben weiß. Bilder mit bereits hohem Weiß-Anteil werden aber
 > immernoch krass hässlich aussehen.
-> Mehrere Codes wurden formatiert um etwas ansehnlicher zu sein, ja dieses Update ist auch was für die Programmier-Homies (Wenn ich welche hätte). Fuck close-sourced, all my homies publish on Github.
+> * Mehrere Codes wurden formatiert um etwas ansehnlicher zu sein, ja dieses Update ist auch was für die Programmier-Homies (Wenn ich welche hätte). Fuck close-sourced, all my homies publish on Github.
 > * Fataler Error gefixt, in welchem der Bot durch das benutzen von **/help** und **/changelog** abstürzte. Die Commandlist/Changelog war inzwischen zu lang für Discord (max 2000 Zeichen), daher wird die Commandlist/Changelog ab jetzt als PNG gespeichert und versendet.
 > 
 > ## Entfernt:

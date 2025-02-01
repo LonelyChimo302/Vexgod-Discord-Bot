@@ -135,7 +135,7 @@ module.exports = {
 
             await sleep(3000);
 
-            await interaction.editReply({ files: [sSave] });
+            await interaction.editReply({ content: `<@${userid}>`, files: [sSave] });
 
             await sleep(1000);
 
