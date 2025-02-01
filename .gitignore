@@ -2,6 +2,7 @@ config.json
 jointocreatetest.js
 userfiles
 node_modules
+backups
 
 // unfertige Scripts und Commands oder Tests
 

@@ -2,17 +2,17 @@
 const { Events } = require('discord.js');
 
 module.exports = {
-	name: Events.MessageCreate,
+    name: Events.MessageCreate,
     once: false,
-	async execute(message) {
+    async execute(message) {
 
         var messagetext = message.content
 
-        if (messagetext === "Hawk Tuah" && message.author.id === "282082952026783744"){
+        if (messagetext.toLowerCase().includes("hawk tuah") && message.author.id === "282082952026783744") {
             await message.reply('Spit on that Florian!')
         }
-        else if (messagetext === "Hawk Tuah"){
+        else if (messagetext.toLowerCase().includes("hawk tuah")) {
             await message.reply('Spit on that thang!')
         }
-	},
+    },
 };

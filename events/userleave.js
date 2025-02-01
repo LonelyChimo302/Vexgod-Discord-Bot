@@ -4,22 +4,22 @@ const modch = '1122955244276568145';
 const client = require("../index.js");
 
 module.exports = {
-	name: Events.GuildMemberRemove,
-	once: false,
-	async execute(member) {
+  name: Events.GuildMemberRemove,
+  once: false,
+  async execute(member) {
 
-        const username = member.displayName
-        const userid = member.id
-        const path = `./userfiles/${userid}`
-        const exists = fs.existsSync(path)
-		
-        client.channels.cache.get(modch).send(`Der Nutzer **${username}** hat uns soeben verlassen oder wurde gekickt/gebannt. Nehmt das als Aufforderung ihn auch aus dem D2 Clan zu schmeißen, falls er dort Mitglied war.`)
+    const username = member.displayName
+    const userid = member.id
+    const path = `./userfiles/${userid}`
 
-        await fs.ensureDir(`./userfiles/${userid}`)
+    client.channels.cache.get(modch).send(`Der Nutzer **${username}** hat uns soeben verlassen oder wurde gekickt/gebannt.`)
 
-        if (exists === true) {
-          await fs.emptyDir(path)
-          await fs.remove(path)
-        }
-	},
+    await fs.ensureDir(`./userfiles/${userid}`)
+    const exists = fs.existsSync(path)
+
+    if (exists === true) {
+      await fs.emptyDir(path)
+      await fs.remove(path)
+    }
+  },
 };

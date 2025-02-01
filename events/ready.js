@@ -1,12 +1,10 @@
 const { Events, ActivityType } = require('discord.js');
-
-const fs = require('fs');
-
+const fs = require('@supercharge/fs');
+const { convert2img } = require("mdimg");
 const { version } = require('../misc.json');
+let statuses = require('./statuslist.js');
 
 const changelog = fs.readFileSync('./CHANGELOG.md').toString();
-
-let statuses = require('./statuslist.js');
 
 const reactionchannel = '1187808184916787381';
 
@@ -43,27 +41,35 @@ const Amogus = '1164163598763966564'
 module.exports = {
 	name: Events.ClientReady,
 	once: false,
-    async execute(client) {
-        client.user.setPresence({
-            activities: [{ name: `Nessussoßen-Bot Version ${version} starting up.`, type: ActivityType.Watching }],
-            status: 'idle',
-        });
-        setInterval(function(){
+	async execute(client) {
+		client.user.setPresence({
+			activities: [{ name: `Nessussoßen-Bot Version ${version} starting up.`, type: ActivityType.Watching }],
+			status: 'idle',
+		});
+		setInterval(function () {
 
-let status = statuses[Math.floor(Math.random() * statuses.length)]
-            client.user.setPresence({
-                activities: [status],
-                status: 'online',
-            });
-        }, 180000)
+			let status = statuses[Math.floor(Math.random() * statuses.length)]
+			client.user.setPresence({
+				activities: [status],
+				status: 'online',
+			});
+		}, 180000)
 		console.log(`Ready! Logged in as ${client.user.tag}`);
+
+		await convert2img({
+			mdFile: "./CHANGELOG.md",
+			outputFilename: "./pictures/Changelog.png",
+			width: 2000,
+			cssTemplate: "githubDark",
+		});
 
 		if (process.argv[2] && process.argv[2] === '-v') {
 			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped!!!**');
 			client.channels.cache.get('1084198804108095660').send(changelog)
+				.catch(() => client.channels.cache.get('1084198804108095660').send({ content: 'Ups, der Changelog dieser Version ist zu lang, ich wandel ihn in ein Bild um.', files: ["./pictures/Changelog.png"] }));
 		}
 
-		else if (process.argv[2] && process.argv[2] === '-r'){
+		else if (process.argv[2] && process.argv[2] === '-r') {
 			console.log('Rebooted')
 		}
 
@@ -71,23 +77,23 @@ let status = statuses[Math.floor(Math.random() * statuses.length)]
 		else {
 			console.log('Im up')
 		}
-	
-		await client.channels.cache.get(reactionchannel).bulkDelete(10)
-		const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
-		await reactionmessage.react(Shooter)
-		await reactionmessage.react(Simulator)
-		await reactionmessage.react(MMO)
-		await reactionmessage.react(RPG)
-		await reactionmessage.react(Horror)
-		await reactionmessage.react(MOBA)
-		await reactionmessage.react(Fighting)
-		await reactionmessage.react(Sandbox)
-		await reactionmessage.react(Racing)
-		await reactionmessage.react(VR)
-		await reactionmessage.react(Other)
 
-		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
-		await consentmessage.react(Amogus)
-		await consentmessage.react(Amogusded) 
-}
+		/*		await client.channels.cache.get(reactionchannel).bulkDelete(10)
+				const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
+				await reactionmessage.react(Shooter)
+				await reactionmessage.react(Simulator)
+				await reactionmessage.react(MMO)
+				await reactionmessage.react(RPG)
+				await reactionmessage.react(Horror)
+				await reactionmessage.react(MOBA)
+				await reactionmessage.react(Fighting)
+				await reactionmessage.react(Sandbox)
+				await reactionmessage.react(Racing)
+				await reactionmessage.react(VR)
+				await reactionmessage.react(Other)
+		
+				const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
+				await consentmessage.react(Amogus)
+				await consentmessage.react(Amogusded) */
+	}
 }

@@ -41,66 +41,66 @@ const no = '1164163602433974312';
 const consentrole = '1237782649477664839'
 
 module.exports = {
-	name: Events.MessageReactionAdd,
+    name: Events.MessageReactionAdd,
     once: false,
-	async execute(reaction, user) { 
+    async execute(reaction, user) {
 
-    //    const testguild = await client.guilds.fetch('1133666004657000479')  
-        const guild = await client.guilds.fetch('1084180121944068236') 
-        const userid = user.id 
+        //    const testguild = await client.guilds.fetch('1133666004657000479')  
+        const guild = await client.guilds.fetch('1084180121944068236')
+        const userid = user.id
         const member = await guild.members.fetch(userid);
 
-   try{  
-        if (user.id === botid){
-            console.log('Bot Reacted')
-        }  
-        else if (reaction.message.channelId === channelid ){
+        try {
+            if (user.id === botid) {
+                console.log('Bot Reacted')
+            }
+            else if (reaction.message.channelId === channelid) {
 
-            if (reaction.emoji.id === MOBA){
-                await member.roles.add(MOBArole)
+                if (reaction.emoji.id === MOBA) {
+                    await member.roles.add(MOBArole)
+                }
+                else if (reaction.emoji.id === Shooter) {
+                    await member.roles.add(Shooterrole)
+                }
+                else if (reaction.emoji.id === Sandbox) {
+                    await member.roles.add(Sandboxrole)
+                }
+                else if (reaction.emoji.id === Simulator) {
+                    await member.roles.add(Simulatorrole)
+                }
+                else if (reaction.emoji.id === Horror) {
+                    await member.roles.add(Horrorrole)
+                }
+                else if (reaction.emoji.id === VR) {
+                    await member.roles.add(VRrole)
+                }
+                else if (reaction.emoji.id === Other) {
+                    await member.roles.add(Otherrole)
+                }
+                else if (reaction.emoji.id === MMO) {
+                    await member.roles.add(MMOrole)
+                }
+                else if (reaction.emoji.id === Fighting) {
+                    await member.roles.add(Fightingrole)
+                }
+                else if (reaction.emoji.id === RPG) {
+                    await member.roles.add(RPGrole)
+                }
+                else if (reaction.emoji.id === no) {
+                    await member.roles.add(consentrole)
+                }
+                else if (reaction.emoji.id === racing) {
+                    await member.roles.add(racingrole)
+                }
+                else {
+
+                }
             }
-            else if (reaction.emoji.id === Shooter){
-                await member.roles.add(Shooterrole)
-            }
-            else if (reaction.emoji.id === Sandbox){
-                await member.roles.add(Sandboxrole)
-            }
-            else if (reaction.emoji.id === Simulator){
-                await member.roles.add(Simulatorrole)
-            }
-            else if (reaction.emoji.id === Horror){
-                await member.roles.add(Horrorrole)
-            }
-            else if (reaction.emoji.id === VR){
-                await member.roles.add(VRrole)
-            }
-            else if (reaction.emoji.id === Other){
-                await member.roles.add(Otherrole)
-            }
-            else if (reaction.emoji.id === MMO){
-                await member.roles.add(MMOrole)
-            }
-            else if (reaction.emoji.id === Fighting){
-                await member.roles.add(Fightingrole)
-            }
-            else if (reaction.emoji.id === RPG){
-                await member.roles.add(RPGrole)
-            }
-            else if (reaction.emoji.id === no){
-                await member.roles.add(consentrole)
-            }
-            else if (reaction.emoji.id === racing){
-                await member.roles.add(racingrole)
-            }
+
             else {
-                
             }
+        } catch (error) {
+            console.error(error)
         }
-
-        else {
-        }
-    } catch (error){
-        console.error(error)
-    }
-	},
+    },
 };

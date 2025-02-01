@@ -10,18 +10,18 @@ const jtcchannel = '1112812765942399090';
 const parent = '1084190001509711873';
 
 module.exports = {
-	name: Events.VoiceStateUpdate,
-	once: false,
-	async execute(oldUser, newUser) {      
-        
+    name: Events.VoiceStateUpdate,
+    once: false,
+    async execute(oldUser, newUser) {
+
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
 
         today = dd + '/' + mm + '/' + yyyy;
 
-        var jsondata =  `{ "lastactive" : "${today}" }`
+        var jsondata = `{ "lastactive" : "${today}" }`
 
 
         const userid = newUser.member.id
@@ -31,7 +31,7 @@ module.exports = {
         const exists = fs.existsSync(path)
 
         const username = newUser.member.displayName;
-    
+
         const oldchannel = oldUser.channel;
 
         const oldchannelID = oldUser.channelId;
@@ -49,37 +49,37 @@ module.exports = {
         else {
             var name = `${username}'s channel`
         }
-try {
+        try {
 
-    if ( channel === jtcchannel ) {
+            if (channel === jtcchannel) {
 
-            await newUser.guild.channels.create({
-                name: `${name}`,
-                type: ChannelType.GuildVoice,
-                parent: parent,           
-            })
-            .then(async channel => {
-                temporaryChannels.add(channel.id);
-                await newUser.setChannel(channel.id);
-                channel.permissionOverwrites.set([
-                    {
-                        id: newUser.id,
-                        allow: [PermissionsBitField.Flags.ManageChannels, PermissionsBitField.Flags.Connect, PermissionsBitField.Flags.ReadMessageHistory]
-                    }
-                ])
-            });
-        
-        }        
-    
-    if (oldchannel.members.size <= 0 && oldchannel.parentId === parent && oldchannelID !== jtcchannel && oldchannelID !== channel) {
+                await newUser.guild.channels.create({
+                    name: `${name}`,
+                    type: ChannelType.GuildVoice,
+                    parent: parent,
+                })
+                    .then(async channel => {
+                        temporaryChannels.add(channel.id);
+                        await newUser.setChannel(channel.id);
+                        channel.permissionOverwrites.set([
+                            {
+                                id: newUser.id,
+                                allow: [PermissionsBitField.Flags.ManageChannels, PermissionsBitField.Flags.Connect, PermissionsBitField.Flags.ReadMessageHistory]
+                            }
+                        ])
+                    });
 
-        await oldchannel.delete();
-        temporaryChannels.delete(oldchannelID)
+            }
 
-    }
+            if (oldchannel.members.size <= 0 && oldchannel.parentId === parent && oldchannelID !== jtcchannel && oldchannelID !== channel) {
 
-}    catch (error) {
-    
-    }
+                await oldchannel.delete();
+                temporaryChannels.delete(oldchannelID)
+
+            }
+
+        } catch (error) {
+
+        }
     }
 };
