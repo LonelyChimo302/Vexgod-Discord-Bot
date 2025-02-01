@@ -67,6 +67,8 @@ module.exports = {
 			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped!!!**');
 			client.channels.cache.get('1084198804108095660').send(changelog)
 				.catch(() => client.channels.cache.get('1084198804108095660').send({ content: 'Ups, der Changelog dieser Version ist zu lang, ich wandel ihn in ein Bild um.', files: ["./pictures/Changelog.png"] }));
+
+			await fs.remove('./pictures/Changelog.png')
 		}
 
 		else if (process.argv[2] && process.argv[2] === '-r') {
@@ -78,22 +80,22 @@ module.exports = {
 			console.log('Im up')
 		}
 
-				await client.channels.cache.get(reactionchannel).bulkDelete(10)
-				const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
-				await reactionmessage.react(Shooter)
-				await reactionmessage.react(Simulator)
-				await reactionmessage.react(MMO)
-				await reactionmessage.react(RPG)
-				await reactionmessage.react(Horror)
-				await reactionmessage.react(MOBA)
-				await reactionmessage.react(Fighting)
-				await reactionmessage.react(Sandbox)
-				await reactionmessage.react(Racing)
-				await reactionmessage.react(VR)
-				await reactionmessage.react(Other)
-		
-				const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
-				await consentmessage.react(Amogus)
-				await consentmessage.react(Amogusded)
+		await client.channels.cache.get(reactionchannel).bulkDelete(10)
+		const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
+		await reactionmessage.react(Shooter)
+		await reactionmessage.react(Simulator)
+		await reactionmessage.react(MMO)
+		await reactionmessage.react(RPG)
+		await reactionmessage.react(Horror)
+		await reactionmessage.react(MOBA)
+		await reactionmessage.react(Fighting)
+		await reactionmessage.react(Sandbox)
+		await reactionmessage.react(Racing)
+		await reactionmessage.react(VR)
+		await reactionmessage.react(Other)
+
+		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
+		await consentmessage.react(Amogus)
+		await consentmessage.react(Amogusded)
 	}
 }
