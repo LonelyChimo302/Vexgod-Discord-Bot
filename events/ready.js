@@ -1,6 +1,5 @@
 const { Events, ActivityType } = require('discord.js');
 const fs = require('@supercharge/fs');
-const { convert2img } = require("mdimg");
 const { version } = require('../misc.json');
 let statuses = require('./statuslist.js');
 
@@ -56,19 +55,10 @@ module.exports = {
 		}, 180000)
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 
-		await convert2img({
-			mdFile: "./CHANGELOG.md",
-			outputFilename: "./pictures/Changelog.png",
-			width: 2000,
-			cssTemplate: "githubDark",
-		});
-
 		if (process.argv[2] && process.argv[2] === '-v') {
 			client.channels.cache.get('1084198804108095660').send('**Holy shit, new Version just dropped!!!**');
 			client.channels.cache.get('1084198804108095660').send(changelog)
 				.catch(() => client.channels.cache.get('1084198804108095660').send({ content: 'Ups, der Changelog dieser Version ist zu lang, ich wandel ihn in ein Bild um.', files: ["./pictures/Changelog.png"] }));
-
-			await fs.remove('./pictures/Changelog.png')
 		}
 
 		else if (process.argv[2] && process.argv[2] === '-r') {

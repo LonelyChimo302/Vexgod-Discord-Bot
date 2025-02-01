@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const fs = require('@supercharge/fs');
-const { convert2img } = require("mdimg");
 
 const changelog = fs.readFileSync('./CHANGELOG.md').toString()
 
@@ -24,17 +23,8 @@ module.exports = {
 
 		else {
 
-			await convert2img({
-				mdFile: "./CHANGELOG.md",
-				outputFilename: "./pictures/Changelog.png",
-				width: 2000,
-				cssTemplate: "githubDark",
-			});
-
 			await interaction.editReply(changelog)
 				.catch(() => interaction.editReply({ content: 'Ups, der Changelog dieser Version ist zu lang, ich wandel ihn in ein Bild um.', files: ["./pictures/Changelog.png"] }))
-
-			await fs.remove('./pictures/Changelog.png')
 
 			cooldown.add(interaction.user.id);
 			setTimeout(() => {

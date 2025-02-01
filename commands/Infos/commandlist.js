@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { convert2img } = require("mdimg");
 const fs = require('@supercharge/fs');
 
 const cooldown = new Set();
@@ -27,13 +26,6 @@ module.exports = {
 
 		else {
 
-			await convert2img({
-				mdFile: "./COMMANDLIST.md",
-				outputFilename: "./pictures/Commandlist.png",
-				width: 2000,
-				cssTemplate: "githubDark",
-			});
-
 			await interaction.reply({ content: "Check deine DM's", ephemeral: true });
 
 			await interaction.member.send({ content: '**Die Commandlist ist inzwischen zu lang für Discord (max 2000 Zeichen), daher musste ich auf .png umsteigen:**', files: ['./pictures/Commandlist.png'] })
@@ -41,9 +33,6 @@ module.exports = {
 					content: `Hey ${user}, da ich dir keine DM schreiben darf (Das hast du in deinen Discord-Kontoeinstellungen so festgelegt), schicke ich dir die Liste auf diesem Weg:\n\n
 **Die Commandlist ist inzwischen zu lang für Discord (max 2000 Zeichen), daher musste ich auf .png umsteigen:** `, files: ['./pictures/Commandlist.png']
 				}));
-
-
-			await fs.remove('./pictures/Commandlist.png')
 
 			cooldown.add(interaction.user.id);
 			setTimeout(() => {
