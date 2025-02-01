@@ -78,7 +78,7 @@ module.exports = {
 			console.log('Im up')
 		}
 
-		/*		await client.channels.cache.get(reactionchannel).bulkDelete(10)
+				await client.channels.cache.get(reactionchannel).bulkDelete(10)
 				const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
 				await reactionmessage.react(Shooter)
 				await reactionmessage.react(Simulator)
@@ -94,6 +94,6 @@ module.exports = {
 		
 				const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
 				await consentmessage.react(Amogus)
-				await consentmessage.react(Amogusded) */
+				await consentmessage.react(Amogusded)
 	}
 }
