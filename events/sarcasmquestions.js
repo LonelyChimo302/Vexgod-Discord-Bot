@@ -23,7 +23,11 @@ module.exports = {
             if (now - lastUsed < cooldownTime) return;
         }
 
-        const match = message.content.match(/[^.?!]*\?/);
+
+        let text = message.content;
+        const linkRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
+        let textWithoutLinks = text.replace(linkRegex, '');
+        const match = textWithoutLinks.match(/[^?.!]*\?/);
 
         if (match) {
             const question = match[0].trim();
