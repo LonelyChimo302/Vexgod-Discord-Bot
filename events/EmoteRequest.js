@@ -7,8 +7,9 @@ module.exports = {
     once: false,
     async execute(message) {
 
+        if (message.member.bot) return;
+
         if (message.channel.id === requestchannel) {
-            if (message.member.bot) return;
 
             await message.reply({
                 poll: {
