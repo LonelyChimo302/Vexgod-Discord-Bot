@@ -12,8 +12,9 @@ module.exports = {
     async execute(message) {
 
         const emote = '1174702859221205043'
+        const FloID = '282082952026783744'
 
-        if (message.author.id === 282082952026783744) {
+        if (message.author.id === FloID) {
             message.react(emote)
         }
     }
