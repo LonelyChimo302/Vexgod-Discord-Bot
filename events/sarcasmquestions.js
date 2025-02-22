@@ -29,7 +29,7 @@ module.exports = {
         try {
             if (huhregex.test(messagetext)) {
                 console.log("Treffer")
-               // await user.timeout(5000)
+                await user.timeout(5000)
             }
         }
         catch (error) {
