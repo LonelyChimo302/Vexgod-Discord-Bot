@@ -34,7 +34,7 @@ module.exports = {
         }
         console.log(zahl)
 
-        if (zahl > 2) {
+        if (zahl > 5) {
             return;
         }
 
