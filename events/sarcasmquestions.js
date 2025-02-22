@@ -20,13 +20,16 @@ module.exports = {
 
         var zahl = generateRandomInt(1, 100)
 
-        var messagetext = message.content
-
         var user = message.member
 
+        var messagetext = message.content
+
+        const huhregex = /(^|\W)huh(\W|$)/i;
+
         try {
-            if (messagetext.toLowerCase().includes("huh")) {
-                await user.timeout(5000)
+            if (huhregex.test(messagetext)) {
+                console.log("Treffer")
+               // await user.timeout(5000)
             }
         }
         catch (error) {
