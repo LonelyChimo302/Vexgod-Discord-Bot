@@ -56,9 +56,9 @@ module.exports = {
 		for (i in EmoteIDs) {
 			await reactionmessage.react(EmoteIDs[i])
 		}
-		
+
 		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
 		await consentmessage.react(Amogus)
-		await consentmessage.react(Amogusded) 
+		await consentmessage.react(Amogusded)
 	}
 }

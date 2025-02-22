@@ -7,12 +7,36 @@ function randomCase(text) {
     ).join('');
 }
 
+function generateRandomInt(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
 module.exports = {
     name: Events.MessageCreate,
     once: false,
     async execute(message) {
 
         if (message.author.bot) return;
+
+        var zahl = generateRandomInt(1, 100)
+
+        var messagetext = message.content
+
+        var user = message.member
+
+        try {
+            if (messagetext.toLowerCase().includes("huh")) {
+                await user.timeout(5000)
+            }
+        }
+        catch (error) {
+
+        }
+        console.log(zahl)
+
+        if (zahl > 2) {
+            return;
+        }
 
         const serverId = message.guild.id;
         const now = Date.now();
