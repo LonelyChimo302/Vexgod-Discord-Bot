@@ -26,19 +26,15 @@ module.exports = {
 
         const huhregex = /(^|\W)huh(\W|$)/i;
 
+        if (zahl > 5) return;
+
         try {
-            if (huhregex.test(messagetext)) {
-                console.log("Treffer")
+            if (huhregex.test(messagetext)){
                 await user.timeout(5000)
             }
         }
         catch (error) {
 
-        }
-        console.log(zahl)
-
-        if (zahl > 5) {
-            return;
         }
 
         const serverId = message.guild.id;
