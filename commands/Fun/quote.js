@@ -1,30 +1,18 @@
+const utils = require('../../utils.js')
+
 const { SlashCommandBuilder } = require('discord.js');
+
 const cooldown = new Set();
+
 const cooldownTime = 10000;
+
 const Canvas = require('canvas');
+
 const fs = require('@supercharge/fs');
+
 var today = new Date();
+
 var year = today.getFullYear();
-
-function addLineBreaks(input, interval) {
-    let result = '';
-    let currentLine = '';
-
-    input.split(' ').forEach(word => {
-        if ((currentLine + word).length > interval) {
-            result += currentLine.trim() + '\n';
-            currentLine = '';
-        }
-        currentLine += word + ' ';
-    });
-
-    result += currentLine.trim();
-    return result;
-}
-
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -47,8 +35,6 @@ module.exports = {
 
         await interaction.deferReply();
 
-
-
         if (cooldown.has(interaction.user.id)) {
             /// If the cooldown did not end
             interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
@@ -61,7 +47,7 @@ module.exports = {
 
         else {
 
-            var quotetext = addLineBreaks(quotetextraw, 30)
+            var quotetext = utils.addLineBreaks(quotetextraw, 30)
 
             var quotelines = quotetext.split('\n').length;
 
@@ -116,8 +102,6 @@ module.exports = {
                 ctx.fillText(quotetext, canvas.width / 1.6, canvas.height / 3);
             }
 
-            else { }
-
             ctx.font = '20px sans-serif';
             ctx.fillStyle = "rgb(255,255,255)";
             ctx.textAlign = 'right'
@@ -133,11 +117,11 @@ module.exports = {
             const stream = canvas.createPNGStream();
             stream.pipe(out);
 
-            await sleep(3000);
+            await utils.sleep(3000);
 
             await interaction.editReply({ content: `<@${userid}>`, files: [sSave] });
 
-            await sleep(1000);
+            await utils.sleep(1000);
 
             await fs.remove(sSave);
 

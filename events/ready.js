@@ -41,10 +41,7 @@ module.exports = {
 				.catch(() => client.channels.cache.get('1084198804108095660').send({ content: 'Ups, der Changelog dieser Version ist zu lang, ich wandel ihn in ein Bild um.', files: ["./pictures/Changelog.png"] }));
 		}
 
-		else if (process.argv[2] && process.argv[2] === '-r') {
-			console.log('Rebooted')
-		}
-
+		else if (process.argv[2] && process.argv[2] === '-t') return;
 
 		else {
 			console.log('Im up')

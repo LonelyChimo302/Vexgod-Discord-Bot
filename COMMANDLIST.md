@@ -6,6 +6,7 @@
 > * **/meme** - Ein eigens gebastelter Memegenerator. Bild hochladen, auswählen ob das Bild gedeepfried werden soll, optionalen Toptext und Bottomtext schreiben und schon wird das Bild generiert. Bilder werden aus technischen limitierungen auf 1000x1000 gequetscht Text könnte dezentriert sein/wirken, node-canvas ist nicht besonders gut im zentieren.
 > * **/bonk** - Bonkt einen Horny-User. Zeigs ihnen!
 > * **/quote** - Erstellt für dich ein inspirierendes Zitat-Bild mit dem Profilbild und Namen (+ Jahr) des markierten Users.
+> * **/stonks** - Sendet dir den Link zu unserem total seriösen Cryptocoin.
 > 
 > ## Info Commands:
 > * **/changelog** - Zeigt dir den neusten Changelog.

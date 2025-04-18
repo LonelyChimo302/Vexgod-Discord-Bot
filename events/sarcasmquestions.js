@@ -29,7 +29,7 @@ module.exports = {
         if (zahl > 5) return;
 
         try {
-            if (huhregex.test(messagetext)){
+            if (huhregex.test(messagetext)) {
                 await user.timeout(5000)
             }
         }

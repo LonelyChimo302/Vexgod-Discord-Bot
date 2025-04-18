@@ -17,7 +17,7 @@ module.exports = {
     await fs.ensureDir(`./userfiles/${userid}`)
     const exists = fs.existsSync(path)
 
-    if (exists === true) {
+    if (exists) {
       await fs.emptyDir(path)
       await fs.remove(path)
     }

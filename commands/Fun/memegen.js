@@ -1,3 +1,5 @@
+const utils = require('../../utils.js')
+
 const { SlashCommandBuilder } = require('discord.js');
 
 const fs = require('@supercharge/fs');
@@ -44,26 +46,6 @@ async function deepFryEffect(inputPath, outputPath) {
     const out = fs.createWriteStream(outputPath);
     const stream = canvas.createJPEGStream({ quality: 0.2 });
     stream.pipe(out);
-}
-
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function addLineBreaks(input, interval) {
-    let result = '';
-    let currentLine = '';
-
-    input.split(' ').forEach(word => {
-        if ((currentLine + word).length > interval) {
-            result += currentLine.trim() + '\n';
-            currentLine = '';
-        }
-        currentLine += word + ' ';
-    });
-
-    result += currentLine.trim();
-    return result;
 }
 
 module.exports = {
@@ -119,25 +101,23 @@ module.exports = {
             var deepfry = interaction.options.getString('deepfry')
 
             if (cooldown.has(interaction.user.id)) {
-                /// If the cooldown did not end
                 interaction.editReply("Brudi du bist noch auf Cooldown, warte bitte.");
-
             }
 
             else if (bottomraw.length > 77 || topraw.length > 77) {
                 await interaction.editReply('Einer oder beide Texte sind zu lang. Versuch ihn zu kürzen.')
             }
 
-            else if (filetype.includes('webp') === true || filetype.includes('gif') === true) {
+            else if (filetype.includes('webp') || filetype.includes('gif')) {
                 await interaction.editReply('Nein. webp und gif akzeptieren wir hier nicht.')
             }
 
 
-            else if (filetype.includes('image') === true) {
+            else if (filetype.includes('image')) {
 
-                var top = addLineBreaks(topraw, 25);
+                var top = utils.addLineBreaks(topraw, 25);
 
-                var bottom = addLineBreaks(bottomraw, 25);
+                var bottom = utils.addLineBreaks(bottomraw, 25);
 
                 var bottomLines = bottom.split('\n').length;
 
@@ -174,11 +154,11 @@ module.exports = {
                         stream.pipe(out);
                     })
 
-                    await sleep(5000);
+                    await utils.sleep(5000);
 
                     deepFryEffect(sSave, deepfryout)
 
-                    await sleep(5000);
+                    await utils.sleep(5000);
 
                     await interaction.editReply({ content: null, files: [`${deepfryout}`] });
 
@@ -253,11 +233,11 @@ module.exports = {
 
                     if (deepfry === 'true') {
 
-                        await sleep(5000);
+                        await utils.sleep(5000);
 
                         deepFryEffect(sSave, deepfryout)
 
-                        await sleep(5000);
+                        await utils.sleep(5000);
 
                         await interaction.editReply({ content: null, files: [`${deepfryout}`] });
 
@@ -274,7 +254,7 @@ module.exports = {
 
                     else {
 
-                        await sleep(5000);
+                        await utils.sleep(5000);
 
                         await interaction.editReply({ content: null, files: [`${sSave}`] });
 
@@ -289,7 +269,7 @@ module.exports = {
 
             }
 
-            else if (filetype.includes('image') === false) {
+            else if (!filetype.includes('image')) {
                 interaction.editReply('Das ist kein Bild, falls doch, dann nicht in einem gängigen Format wie jpeg oder png.')
                 cooldown.add(interaction.user.id);
                 setTimeout(() => {

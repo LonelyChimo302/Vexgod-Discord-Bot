@@ -11,33 +11,28 @@ module.exports = {
 
         if (message.channel.id === requestchannel) {
 
-            if (message.member.id === maraID) {
+            if (message.member.id === maraID) return;
 
-            }
-
-            else {
-                await message.reply({
-                    poll: {
-                        question: {
-                            text: 'Soll das zum Emote/Sticker/Soundboard Sound werden?',
-                        },
-                        answers: [
-                            {
-                                text: 'Yee',
-                                emoji: '1116464522379665458',
-                            },
-                            {
-                                text: 'Nö',
-                                emoji: '1116464573797638145',
-                            },
-                        ],
-                        duration: 48, // In Stunden
-                        allowMultiselect: false,
-                        layoutType: 1, // Single type (optional)
+            await message.reply({
+                poll: {
+                    question: {
+                        text: 'Soll das zum Emote/Sticker/Soundboard Sound werden?',
                     },
-                })
-            }
+                    answers: [
+                        {
+                            text: 'Yee',
+                            emoji: '1116464522379665458',
+                        },
+                        {
+                            text: 'Nö',
+                            emoji: '1116464573797638145',
+                        },
+                    ],
+                    duration: 48, // In Stunden
+                    allowMultiselect: false,
+                    layoutType: 1, // Single type (optional)
+                },
+            })
         }
     }
-
 }

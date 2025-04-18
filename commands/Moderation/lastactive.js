@@ -34,7 +34,7 @@ module.exports = {
 
             }
 
-            else if (exists === true) {
+            else if (exists) {
                 delete require.cache[require.resolve(`../../userfiles/${userid}/lastactive.json`)]
                 var { lastactive } = require(`../../userfiles/${userid}/lastactive.json`)
 

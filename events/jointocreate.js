@@ -42,7 +42,7 @@ module.exports = {
 
         fs.writeFileSync(`./userfiles/${userid}/lastactive.json`, jsondata);
 
-        if (exists === true) {
+        if (exists) {
             delete require.cache[require.resolve(`../userfiles/${userid}/voice.json`)]
             var { name } = require(`../userfiles/${userid}/voice.json`)
         }
