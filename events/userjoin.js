@@ -1,5 +1,5 @@
 const { Events } = require('discord.js');
-const role = '1115225025306439691';
+const role = '1114702766091292692';
 const { joinmessage } = require('../misc.json');
 const client = require("../index.js");
 const channel = '1084198804108095660'
