@@ -1,7 +1,17 @@
 # Vexgod-Discord-Bot
 A simple Discord Bot for the Homies
 
-> # NEU: Version 1.6:
+> # NEU: Version 1.7:
+> 
+> ## Hinzugefügt:
+> * Der Bot durchsucht per API jetzt "IsThereAnyDeal.com" nach Free2Keep Spielen auf diversen Plattformen täglich um 16:00 und sendet, sobald er fertig ist und es etwas neues gibt, Die Spiele mit Link in den Gaming-News Channel
+> 
+> ## Geändert:
+> 
+> ## Entfernt:
+> 
+> # Ältere Versionen:
+> ## Version 1.6:
 > 
 > ## Hinzugefügt:
 > * Neuer Fun-Command. Mit **/stonks** kann man sich den Link zu unserem total seriösen und ernstgemeinten Cryptocoin senden lassen. (Bitte nicht ernsthaft investieren.)
@@ -12,7 +22,6 @@ A simple Discord Bot for the Homies
 > 
 > ## Entfernt:
 > 
-> # Ältere Versionen:
 > ## Version 1.5:
 > 
 > ### Hinzugefügt:
