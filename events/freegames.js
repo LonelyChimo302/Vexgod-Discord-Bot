@@ -108,8 +108,6 @@ async function checkDeals() {
     chunks.forEach((chunk, idx) => {
       client.channels.cache.get(channel).send(`\n# 📢 Neue Free2Keep-Titel:\n${chunk}\n`);
     });
-  } else {
-    client.channels.cache.get(channel).send("   Keine neuen kostenlosen Angebote gefunden.");
   }
 
   saveDeals(todayTitles);
