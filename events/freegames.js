@@ -2,7 +2,7 @@ const https = require("https");
 const fs = require("fs");
 const cron = require("node-cron");
 const client = require("../index.js")
-const channel = "1261020564730941580"
+const channel = "1332442011239710812"
 
 const { API_KEY } = require("../config.json");
 const BASE_URL = "https://api.isthereanydeal.com/deals/v2";
@@ -39,16 +39,15 @@ function fetchPage(offset) {
           const list = json.list || json.data?.list || [];
           resolve(list);
         } catch (err) {
-          console.error("Fehler beim Parsen:", err);
           resolve([]);
         }
       });
     }).on("error", err => {
-      console.error("HTTP-Fehler:", err);
       resolve([]);
     });
   });
 }
+
 
 async function fetchAllDeals() {
   let offset = 0, page = 1, allDeals = [];
@@ -87,33 +86,78 @@ function chunkMessage(lines) {
   return chunks;
 }
 
+const puppeteer = require("puppeteer");
+
+async function fetchSteamDB() {
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+
+  const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1";
+  await page.goto(url, { waitUntil: "networkidle2" });
+
+  await page.waitForSelector(".search_result_row");
+
+  const deals = await page.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll(".search_result_row"));
+    return rows.map(r => {
+      const title = r.querySelector(".title")?.innerText.trim();
+      const link = r.href;
+      let expiry = null;
+
+      const discountSpan = r.querySelector(".search_discount span");
+      if (discountSpan) {
+        const text = discountSpan.innerText;
+        const match = text.match(/Free until (.+)/);
+        if (match) {
+          expiry = new Date(match[1]).getTime() / 1000;
+        }
+      }
+
+      return { title, deal: { url: link, expiry }, source: "Steam" };
+    });
+  });
+
+  await browser.close();
+  return deals;
+}
+
 async function checkDeals() {
   const allDeals = await fetchAllDeals();
 
-  const todayDeals = allDeals.filter(g => g.deal.cut >= 100);
+  const steamDeals = await fetchSteamDB();
 
+  const todayDeals = allDeals.filter(g => g.deal.cut >= 100);
   const todayTitles = todayDeals.map(g => g.title);
+
+  const steamTitles = steamDeals.map(d => d.title);
+
+  const allTitlesToSave = [...todayTitles, ...steamTitles];
+
   const oldTitles = loadOldDeals();
-  const newDeals = todayDeals.filter(g => !oldTitles.includes(g.title));
+
+  const combinedDeals = [...todayDeals, ...steamDeals];
+  const newDeals = combinedDeals.filter(g => !oldTitles.includes(g.title));
+
 
   if (newDeals.length > 0) {
     const messageLines = newDeals.map(g => {
-      const shop = g.deal.shop?.name || "Unbekannter Shop";
-      const endDate = g.deal.expiry ? formatDate(Math.floor(new Date(g.deal.expiry).getTime() / 1000)) : null;
-      const link = g.urls?.buy || g.deal.url || "";
+      const shop = g.deal?.shop?.name || g.source || "Unbekannter Shop";
+      const endDate = g.deal?.expiry ? formatDate(Math.floor(g.deal.expiry)) : null;
+      const link = g.deal?.url || "";
       return `## - [${shop}] [**${g.title}**](${link})${endDate ? `\n→ **endet am ${endDate}**\n` : ""}`;
     });
 
     const chunks = chunkMessage(messageLines);
-    chunks.forEach((chunk, idx) => {
-      client.channels.cache.get(channel).send(`\n# 📢 Neue Free2Keep-Titel:\n${chunk}\n`);
-    });
+    for (const chunk of chunks) {
+      client.channels.cache.get(channel)?.send(`\n<@&1405476709062545408>\n# 📢 Neue Free2Keep-Titel:\n${chunk}\n`);
+    }
   }
 
-  saveDeals(todayTitles);
+  saveDeals(allTitlesToSave);
 }
 
-cron.schedule("* 16 * * *", () => {
+
+cron.schedule("0 16 * * *", () => {
   checkDeals();
 });
 

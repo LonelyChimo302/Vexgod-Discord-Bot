@@ -22,7 +22,9 @@
     "bufferutil": "^4.0.9",
     "canvas": "^3.1.0",
     "discord.js": "^14.11.0",
+    "fuse.js": "^7.1.0",
     "mdimg": "^1.4.3",
-    "node-cron": "^4.2.1"
+    "node-cron": "^4.2.1",
+    "node-fetch": "^2.7.0"
   }
 }

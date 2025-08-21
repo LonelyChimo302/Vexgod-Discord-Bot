@@ -11,3 +11,6 @@
 > * Racing-Games = <:Lightning_McQueen:1261600995100725248>
 > * VR-Games = <:VR:1187773171311591474>
 > * Alle anderen Games = <:Steam:1187773167628992564>
+> 
+> 
+> * Im <#1261020564730941580> Channel gepingt werden, wenn es wieder free2keep-Spiele gibt = <:patrick_ping:1116459600791752744>

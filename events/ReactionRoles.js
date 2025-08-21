@@ -28,7 +28,9 @@ const rpg = { emote: '1116463855955091518', role: '1236744003299311769' };
 
 const no = { emote: '1164163602433974312', role: '1237782649477664839' };
 
-let emoteArray = [moba, shooter, simulator, mmo, horror, fighting, sandbox, racing, vr, other, rpg, no]
+const fgping = { emote: '1116459600791752744', role: '1405476709062545408' };
+
+let emoteArray = [moba, shooter, simulator, mmo, horror, fighting, sandbox, racing, vr, other, rpg, no, fgping]
 
 module.exports = {
     name: Events.MessageReactionAdd,
