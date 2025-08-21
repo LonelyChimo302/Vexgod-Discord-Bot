@@ -89,7 +89,11 @@ function chunkMessage(lines) {
 const puppeteer = require("puppeteer");
 
 async function fetchSteamDB() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: '/usr/bin/chromium',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   const page = await browser.newPage();
 
   const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1";
