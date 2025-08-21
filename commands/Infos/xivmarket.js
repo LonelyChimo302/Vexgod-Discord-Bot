@@ -27,7 +27,7 @@ module.exports = {
 
             const fetch = require('node-fetch');
 
-            const DC_NAMES = ['Chaos', 'Light'];
+            const DC_NAMES = ['Chaos'];
 
             const norm = s => s
                 ? s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim()
