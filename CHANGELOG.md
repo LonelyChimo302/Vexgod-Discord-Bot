@@ -1,4 +1,4 @@
-# Mommy-Mara
+# potatOS
 A simple Discord Bot for the Homies
 
 > # NEU: Version 1.8:
