@@ -2,7 +2,7 @@ const https = require("https");
 const fs = require("fs");
 const cron = require("node-cron");
 const client = require("../index.js")
-const channel = "1332442011239710812"
+const channel = "1261020564730941580"
 
 const { API_KEY } = require("../config.json");
 const BASE_URL = "https://api.isthereanydeal.com/deals/v2";
