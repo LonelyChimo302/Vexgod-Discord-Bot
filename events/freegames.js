@@ -99,7 +99,7 @@ async function fetchSteamDB() {
   const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1";
   await page.goto(url, { waitUntil: "networkidle2" });
 
-  await page.waitForSelector(".search_result_row");
+  await page.waitForSelector(".search_result_row", { timeout: 60000 });
 
   const deals = await page.evaluate(() => {
     const rows = Array.from(document.querySelectorAll(".search_result_row"));
@@ -162,7 +162,14 @@ async function checkDeals() {
 
 
 cron.schedule("0 16 * * *", () => {
-  checkDeals();
-});
+  try {
+    checkDeals();
+  } catch (error) {
 
-checkDeals();
+  }
+});
+try {
+  checkDeals();
+} catch (error) {
+
+}
