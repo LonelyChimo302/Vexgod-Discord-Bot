@@ -2,7 +2,7 @@ const https = require("https");
 const fs = require("fs");
 const cron = require("node-cron");
 const client = require("../index.js")
-const channel = "1261020564730941580"
+const channel = "1332442011239710812"
 
 const { API_KEY } = require("../config.json");
 const BASE_URL = "https://api.isthereanydeal.com/deals/v2";
@@ -94,12 +94,19 @@ async function fetchSteamDB() {
     executablePath: '/usr/bin/chromium',
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
+
   const page = await browser.newPage();
-
   const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1";
-  await page.goto(url, { waitUntil: "networkidle2" });
 
-  await page.waitForSelector(".search_result_row", { timeout: 60000 });
+  await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+
+  try {
+    await page.waitForSelector(".search_result_row", { timeout: 60000 });
+  } catch (e) {
+    const html = await page.content();
+    await browser.close();
+    throw e;
+  }
 
   const deals = await page.evaluate(() => {
     const rows = Array.from(document.querySelectorAll(".search_result_row"));
@@ -165,11 +172,11 @@ cron.schedule("0 16 * * *", () => {
   try {
     checkDeals();
   } catch (error) {
-
+    console.error(err);
   }
 });
 try {
   checkDeals();
 } catch (error) {
-
+  console.error(err);
 }
