@@ -25,6 +25,8 @@
     "fuse.js": "^7.1.0",
     "mdimg": "^1.4.3",
     "node-cron": "^4.2.1",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   }
 }

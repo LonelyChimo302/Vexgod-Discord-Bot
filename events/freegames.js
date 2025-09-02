@@ -86,51 +86,80 @@ function chunkMessage(lines) {
   return chunks;
 }
 
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+puppeteer.use(StealthPlugin());
 
 async function fetchSteamDB() {
-  const browser = await puppeteer.launch({
-    headless: true,
-    executablePath: '/usr/bin/chromium',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  let browser;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      browser = await puppeteer.launch({
+        headless: true,
+        executablePath: '/usr/bin/chromium',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      });
 
-  const page = await browser.newPage();
-  const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1";
+      const page = await browser.newPage();
+      const url = "https://store.steampowered.com/search/?maxprice=free&specials=1&ndl=1&l=english";
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
 
-  await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
+      // Scrollen, um sicherzugehen, dass Lazy-Load lädt
+      await page.evaluate(async () => {
+        await new Promise(resolve => {
+          let totalHeight = 0;
+          const distance = 400;
+          const timer = setInterval(() => {
+            window.scrollBy(0, distance);
+            totalHeight += distance;
+            if (totalHeight >= document.body.scrollHeight) {
+              clearInterval(timer);
+              resolve();
+            }
+          }, 250);
+        });
+      });
 
-  try {
-    await page.waitForSelector(".search_result_row", { timeout: 60000 });
-  } catch (e) {
-    const html = await page.content();
-    await browser.close();
-    throw e;
-  }
-
-  const deals = await page.evaluate(() => {
-    const rows = Array.from(document.querySelectorAll(".search_result_row"));
-    return rows.map(r => {
-      const title = r.querySelector(".title")?.innerText.trim();
-      const link = r.href;
-      let expiry = null;
-
-      const discountSpan = r.querySelector(".search_discount span");
-      if (discountSpan) {
-        const text = discountSpan.innerText;
-        const match = text.match(/Free until (.+)/);
-        if (match) {
-          expiry = new Date(match[1]).getTime() / 1000;
-        }
+      // Elemente suchen
+      const rows = await page.$$(".search_result_row");
+      if (!rows.length) {
+        throw new Error("Keine .search_result_row gefunden – evtl. Captcha oder leere Seite");
       }
 
-      return { title, deal: { url: link, expiry }, source: "Steam" };
-    });
-  });
+      // Deals extrahieren
+      const deals = await page.evaluate(() => {
+        const rows = Array.from(document.querySelectorAll(".search_result_row"));
+        return rows.map(r => {
+          const title = r.querySelector(".title")?.innerText.trim();
+          const link = r.href;
+          let expiry = null;
 
-  await browser.close();
-  return deals;
+          const discountSpan = r.querySelector(".search_discount span");
+          if (discountSpan) {
+            const text = discountSpan.innerText;
+            const match = text.match(/Free until (.+)/);
+            if (match) {
+              expiry = new Date(match[1]).getTime() / 1000;
+            }
+          }
+          return { title, deal: { url: link, expiry }, source: "Steam" };
+        });
+      });
+
+      await browser.close();
+      return deals;
+    } catch (err) {
+      if (browser) {
+        await browser.close();
+        browser = null;
+      }
+      if (attempt === 3) {
+        return [];
+      }
+    }
+  }
 }
+
 
 async function checkDeals() {
   const allDeals = await fetchAllDeals();
@@ -169,14 +198,7 @@ async function checkDeals() {
 
 
 cron.schedule("0 16 * * *", () => {
-  try {
-    checkDeals();
-  } catch (error) {
-    console.error(err);
-  }
-});
-try {
   checkDeals();
-} catch (error) {
-  console.error(err);
-}
+});
+
+checkDeals();
