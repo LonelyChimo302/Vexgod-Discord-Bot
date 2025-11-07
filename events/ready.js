@@ -7,22 +7,12 @@ const changelog = fs.readFileSync('./CHANGELOG.md').toString();
 
 const reactionchannel = '1187808184916787381';
 
-const reactionmessagetext = fs.readFileSync('./REACTIONMESSAGE.md').toString();
-
-const consentmessagetext = fs.readFileSync('./CONSENTMESSAGE.md').toString();
-
-let EmoteIDs = ['1187771288538861689', '1187773164533600377', '1187773148867870851', '1187773174813839530', '1116463855955091518', '1187773155473887242', '1187773151850020874', '1187772048102133761', '1261600995100725248', '1187773171311591474', '1187773167628992564', '1116459600791752744']
-
-const Amogusded = '1164163602433974312';
-
-const Amogus = '1164163598763966564'
-
 module.exports = {
 	name: Events.ClientReady,
 	once: false,
 	async execute(client) {
 		client.user.setPresence({
-			activities: [{ name: `Nessussoßen-Bot Version ${version} starting up.`, type: ActivityType.Watching }],
+			activities: [{ name: `potatOS Version ${version} starting up.`, type: ActivityType.Watching }],
 			status: 'idle',
 		});
 		setInterval(function () {
@@ -47,15 +37,8 @@ module.exports = {
 			console.log('Im up')
 		}
 
-		await client.channels.cache.get(reactionchannel).bulkDelete(10)
-		const reactionmessage = await client.channels.cache.get(reactionchannel).send(reactionmessagetext)
+		await client.channels.cache.get(reactionchannel).messages.fetch('1412477129127366666')
 
-		for (i in EmoteIDs) {
-			await reactionmessage.react(EmoteIDs[i])
-		}
-
-		const consentmessage = await client.channels.cache.get(reactionchannel).send(consentmessagetext)
-		await consentmessage.react(Amogus)
-		await consentmessage.react(Amogusded)
+		await client.channels.cache.get(reactionchannel).messages.fetch('1412477163432706138')
 	}
 }

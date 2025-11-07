@@ -1,8 +1,8 @@
 const { Events } = require('discord.js');
 const client = require("../index.js");
-const botid = '1134558655098916974'
-const testchannelid = '1187727547711111199';
-const channelid = '1187808184916787381'
+const botid = '1134558655098916974';
+const testchannelid = '1332442011239710812';
+const channelid = '1187808184916787381';
 
 const moba = { emote: '1187771288538861689', role: '1187808893859024986' };
 
@@ -37,29 +37,36 @@ module.exports = {
     once: false,
     async execute(reaction, user) {
 
-    //  const testguild = await client.guilds.fetch('1133666004657000479')  
-        const guild = await client.guilds.fetch('1084180121944068236')
-        const userid = user.id
+        const reactedchannel = reaction.message.channelId;
+
+    //  const testguild = await client.guilds.fetch('1133666004657000479');
+
+        const guild = await client.guilds.fetch('1084180121944068236');
+        const reactionmessage = '1412477129127366666';
+        const userid = user.id;
         const member = await guild.members.fetch(userid);
 
         try {
+
             if (user.id === botid) return;
 
 
-            if (reaction.message.channelId != channelid) {
+            if (reactedchannel != channelid) {
                 return;
             }
 
-            for (var genre of emoteArray) {
+            if (reaction.message.id = reactionmessage) {
 
-                if (reaction.emoji.id === genre.emote) {
-                    await member.roles.add(genre.role)
+                for (var genre of emoteArray) {
+
+                    if (reaction.emoji.id === genre.emote) {
+                        await member.roles.add(genre.role)
+                    }
+
                 }
 
             }
-
         }
-
 
         catch (error) {
             console.error(error)

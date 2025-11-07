@@ -2,10 +2,6 @@ const { version } = require('../misc.json');
 const { ActivityType } = require('discord.js');
 
 let statuses = [
-	{
-		name: 'Daddy Shaxx Rule34',
-		type: ActivityType.Watching
-	},
 
 	{
 		name: 'Mara Sov Rule34',
@@ -28,12 +24,12 @@ let statuses = [
 	},
 
 	{
-		name: 'Seb ranting about Diablo IV',
+		name: 'Neue Statusanzeigen incoming!?!?!',
 		type: ActivityType.Watching
 	},
 
 	{
-		name: 'Jona playing the Roots of Salvation Raid',
+		name: 'Jona raiding the Roots of Salvation',
 		type: ActivityType.Watching
 	},
 
@@ -63,27 +59,12 @@ let statuses = [
 	},
 
 	{
-		name: 'Rhulk has a pretty juicy ass tbh',
+		name: `potatOS Version ${version}`,
 		type: ActivityType.Watching
 	},
 
 	{
-		name: 'Thomas cook...something...',
-		type: ActivityType.Watching
-	},
-
-	{
-		name: `Nessussoßen Bot Version ${version}`,
-		type: ActivityType.Watching
-	},
-
-	{
-		name: 'Shaggy Ball Z and One Jump Man',
-		type: ActivityType.Watching
-	},
-
-	{
-		name: 'Kevin fap the shit out of his dick',
+		name: 'Chimo change my Statuslist?!?!',
 		type: ActivityType.Watching
 	},
 

@@ -7,11 +7,13 @@
 > * **/bonk** - Bonkt einen Horny-User. Zeigs ihnen!
 > * **/quote** - Erstellt für dich ein inspirierendes Zitat-Bild mit dem Profilbild und Namen (+ Jahr) des markierten Users.
 > * **/stonks** - Sendet dir den Link zu unserem total seriösen Cryptocoin.
+> * **/chimoffline** - Stellt den Admin für seine hohe Zeit an Inaktivität bloß.
 > 
 > ## Info Commands:
 > * **/changelog** - Zeigt dir den neusten Changelog.
 > * **/garrysmod** - Gibt dir eine Liste der Modpacks die der Moderator "Florian" erstellt hat, welche wir nutzen, wenn wir Garrysmod spielen.
 > * **/help** - Zeigt dir diese Liste.
+> * **/xivmarket** - Für FF14 Spieler. Ein Tool um sich die Top 3 Marktpreise eines Items auf allen Chaos Welten anzeigen zu lassen.
 > 
 > ## Settings Commands:
 > ### (Einstellungen die der Nutzer treffen kann)
