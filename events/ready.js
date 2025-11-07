@@ -37,8 +37,8 @@ module.exports = {
 			console.log('Im up')
 		}
 
-		await client.channels.cache.get(reactionchannel).messages.fetch('1412477129127366666')
+		await client.channels.cache.get(reactionchannel).messages.fetch('1423481085915828355')
 
-		await client.channels.cache.get(reactionchannel).messages.fetch('1412477163432706138')
+		await client.channels.cache.get(reactionchannel).messages.fetch('1423481117528559688')
 	}
 }
