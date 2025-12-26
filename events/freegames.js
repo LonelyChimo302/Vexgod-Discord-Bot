@@ -197,7 +197,7 @@ async function checkDeals() {
 }
 
 
-cron.schedule("0 16 * * *", () => {
+cron.schedule("0 23 * * *", () => {
   checkDeals();
 });
 
